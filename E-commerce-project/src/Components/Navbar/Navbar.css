@@ -1,0 +1,11 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-logo {
+    display: flex;
+    align-items:center ;
+    cursor: pointer;
+}
+/* 
