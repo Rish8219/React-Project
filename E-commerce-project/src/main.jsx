@@ -7,7 +7,7 @@ import Cart from './Pages/Cart.jsx'
 import ShopCategory from "./pages/ShopCategory.jsx"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Product from './Pages/Product.jsx'
-import LoginSignup from './Pages/LoginSignup.jsx'
+import LoginSignup, { Login } from './Pages/LoginSignup.jsx'
 import ShopContextProvider from './Context/ShopContext.jsx'
 import men_banner from "./assets/banner_mens.png"
 import women_banner from "./assets/banner_women.png"
@@ -51,8 +51,12 @@ const routes = createBrowserRouter([{
     element: <Checkout/>
   },
   {
-    path:"/login",
+    path:"/signup",
     element:<LoginSignup/>
+  },
+  {
+    path: "/login",
+    element:<Login/>
   }
 
 

@@ -71,14 +71,19 @@ const CartItems = () => {
 };
   const totalAmount = getTotalCartAmount();
   //setting cart total in local storage
-  localStorage.setItem("cartTotal", totalAmount);
   const discountedAmount = totalAmount - (totalAmount * discount);
+  if(discountedAmount ) {
+    localStorage.setItem("cartTotal", discountedAmount);
+  }
+  else {
+    localStorage.setItem("cartTotal", totalAmount);
+  }
 
   const handleCheckout=()=>{
     if (totalAmount === 0) {
       toast.error("Your cart is empty!", {
         position: "top-left",
-        // autoClose: 1000,
+        autoClose: 1000,
         hideProgressBar: true,
         theme: "colored",
       });

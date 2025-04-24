@@ -41,23 +41,36 @@ const Checkout = () => {
 
   const handleOrderPlacement = () => {
     setOrderPlaced(true);
-    toast.success(` Your Order Placed Sucessfully!`, {
-      position: "top-left",
-      autoClose: 1000,
-      hideProgressBar: true,
-      theme: "colored",
-  });
+    if ( !formData.name || !formData.email || !formData.address || !formData.city || !formData.zip) {
+      toast.error(`Please fill all the fields!`, {
+        position: "top-left",
+        autoClose: 1000,
+        hideProgressBar: true,
+        theme: "colored",
+      });
+      return;
+    }
+    else{
+      toast.success(` Your Order Placed Sucessfully!`, {
+        position: "top-left",
+        autoClose: 1000,
+        hideProgressBar: true,
+        theme: "colored",
+    });
+    }
+
   };
 
   const generateInvoicePDF = () => {
-    if (orderPlaced === false) {
+    if (orderPlaced === false && !formData.name || !formData.email || !formData.address || !formData.city || !formData.zip) {
  toast.error(`Place Your Order First!`, {
             position: "top-left",
             autoClose: 1000,
             hideProgressBar: true,
             theme: "colored",
         });
-      // return;
+// alert("Please place your order first before downloading the invoice.");
+      return;
     }
 
     const pdf = new jsPDF();
@@ -77,7 +90,7 @@ const Checkout = () => {
     pdf.line(20, 65, 190, 65); // Divider line
 
     pdf.text(`Subtotal: $${localStorage.getItem("cartTotal")}`, 20, 80);
-    pdf.text(`Shipping (${shippingMethod}): $${shippingMethod === "road" ? "Free" : shippingMethod === "normal" ? "$5" : shippingMethod === "express" ? "$10" : "$20"}`, 20, 90);
+    pdf.text(`Shipping (${shippingMethod}): ${shippingMethod === "road" ? "Free" : shippingMethod === "normal" ? "$5" : shippingMethod === "express" ? "$10" : "$20"}`, 20, 90);
     pdf.setFont("helvetica", "bold");
     pdf.text(`Total: $${totalAmount}`, 20, 100);
 
@@ -113,7 +126,7 @@ const Checkout = () => {
         <p>Payment Method: <span className="font-semibold">{formData.paymentMethod}</span></p>
     
         <p>Shipping Charges: <span className="font-semibold">{shippingMethod === "road" ? "Free" : `$${shippingMethod === "normal" ? "5" : shippingMethod === "express" ? "10" : "20"}`}</span></p>
-        <h3 className="font-bold text-lg mt-2">$Total Amount{totalAmount}</h3>
+        <h3 className="font-bold text-lg mt-2">Total Amount:${totalAmount}</h3>
       </div>
 
       {/* Shipping Selection */}
