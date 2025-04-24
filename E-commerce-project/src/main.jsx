@@ -12,6 +12,7 @@ import ShopContextProvider from './Context/ShopContext.jsx'
 import men_banner from "./assets/banner_mens.png"
 import women_banner from "./assets/banner_women.png"
 import kid_banner from "./assets/banner_kids.png"
+import Checkout from './Pages/Checkout.jsx'
 const routes = createBrowserRouter([{
   path: "/",
   element:  <ShopContextProvider> <App/> </ShopContextProvider>,
@@ -42,7 +43,12 @@ const routes = createBrowserRouter([{
   },
   {
     path: "/cart",
-    element: <Cart/>
+    element: <Cart/>,
+
+  },
+  {
+    path: "/checkout",
+    element: <Checkout/>
   },
   {
     path:"/login",

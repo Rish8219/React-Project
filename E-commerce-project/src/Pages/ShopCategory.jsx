@@ -10,7 +10,7 @@ const ShopCategory = (props) => {
  
     return (
         <div className='w-full shop-category pt-16'>
-        <img src={props.banner} alt="Shop Banner" className="w-full object-cover" />
+        <img src={props.banner} alt="Shop Banner" className="w-full  object-cover" />
     
         {/* Product Count & Sorting */}
         <div className="shopcategory-indexSort mt-10 flex justify-between items-center w-full max-w-screen-lg mx-auto px-6 md:px-10 py-4">

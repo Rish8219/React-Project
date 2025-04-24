@@ -1,0 +1,13 @@
+*{
+    /* margin: 0; */
+    /* padding: 0; */
+    box-sizing: border-box;
+
+}
+html{
+  scroll-behavior: smooth;
+}
+
+.toast-container {
+    z-index: 4666000; /* or any other value you want */
+  }

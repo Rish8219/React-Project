@@ -26,13 +26,8 @@ const ShopContextProvider = (props) => {
             // position: "top-left",
             //position to be middle
             position: "top-left",
-            //can i incease its z-index?
-            autoClose: 100,
-            delay:100,
+            autoClose: 1000,
             hideProgressBar: true,
-            // closeOnClick: true,
-            // pauseOnHover: true,
-            // draggable: true,
 
         });
     };
@@ -45,10 +40,13 @@ const ShopContextProvider = (props) => {
             let itemInfo = all_product.find((product) => product.id === Number(itemId));
             toast.info(`${itemInfo.name} removed from cart!`, {
                 position: "top-left",
+                autoClose: 1000,
                 hideProgressBar: true,
-            autoClose: 10,
+          
+            // theme: "colored",
 
-                
+
+
 
                 // autoClose: 1000,
             });
