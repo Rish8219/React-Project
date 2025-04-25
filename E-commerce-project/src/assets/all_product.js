@@ -41,29 +41,19 @@ let all_product = [
     name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
     category: "women",
     image: p1_img,
+    size:["S","M","L","XL","XXL"],
     new_price: 50.0,
     old_price: 80.5,
-    size:[{
-      Small:true,
-    },
-    {
-      Medium:true,
-    },
-    {
-      Large:true,
-    },
-    {
-      XL:true,
-    }
-  ],
+    available_stock:20,
+
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
-      { user: "Tom", rating: 5, comment: "Great quality and my son loves it!" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs a little big." },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs a little big." }
+      { user: "Tom", rating: 1, comment: "Great quality and my son loves it!" },
+      { user: "Lisa", rating: 2, comment: "Nice fabric, but runs a little big." },
+      { user: "Lisa", rating: 2, comment: "Nice fabric, but runs a little big." }
 
     ],
-    total_reviews: 2
+    total_reviews: 3
 
   },
   {
@@ -73,12 +63,22 @@ let all_product = [
     image: p2_img,
     new_price: 85.0,
     old_price: 120.5,
+    available_stock:70,
+    size:["S","M","L","XL","XXL"],
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son loved it " },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Lisa", rating: 3, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Lisa", rating: 5, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Lisa", rating: 2, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Lisa", rating: 3, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Lisa", rating: 1, comment: "Nice fabric, but runs not more than a year" },
     ],
-    total_reviews: 2
+    total_reviews: 11
   },
   {
     id: 3,
@@ -86,11 +86,24 @@ let all_product = [
     category: "women",
     image: p3_img,
     new_price: 60.0,
+    available_stock:39,
     old_price: 100.5,
+    size:["S","M","L","XL","XXL"],
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Tom", rating: 5, comment: "Great quality and my son loved it!" },
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year." },
+      { user: "John", rating: 3, comment: "Decent product, but the stitching could be better." },
+      { user: "Emily", rating: 5, comment: "Absolutely loved it! Perfect fit and amazing design." },
+      { user: "Sophia", rating: 4, comment: "Good value for money, but delivery was delayed." },
+      { user: "Michael", rating: 2, comment: "Not what I expected. The material feels cheap." },
+      { user: "Olivia", rating: 5, comment: "Exceeded my expectations! Will buy again." },
+      { user: "Daniel", rating: 3, comment: "Average product. The color faded after a few washes." },
+      { user: "Emma", rating: 4, comment: "Comfortable and stylish, but slightly overpriced." },
+      { user: "James", rating: 1, comment: "Terrible experience. The product arrived damaged." }
+
 
     ],
     total_reviews: 2
@@ -101,14 +114,27 @@ let all_product = [
     category: "women",
     image: p4_img,
     new_price: 100.0,
+    available_stock:77,
+    size:["S","M","L","XL","XXL"],
+
     old_price: 150.0,
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Tom", rating: 5, comment: "Great quality and my son loved it!" },
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year." },
+      { user: "John", rating: 3, comment: "Decent product, but the stitching could be better." },
+      { user: "Emily", rating: 5, comment: "Absolutely loved it! Perfect fit and amazing design." },
+      { user: "Sophia", rating: 4, comment: "Good value for money, but delivery was delayed." },
+      { user: "Michael", rating: 2, comment: "Not what I expected. The material feels cheap." },
+      { user: "Olivia", rating: 5, comment: "Exceeded my expectations! Will buy again." },
+      { user: "Daniel", rating: 3, comment: "Average product. The color faded after a few washes." },
+      { user: "Emma", rating: 4, comment: "Comfortable and stylish, but slightly overpriced." },
+      { user: "James", rating: 1, comment: "Terrible experience. The product arrived damaged." }
 
     ],
-    total_reviews: 2
+    total_reviews: 9
 
   },
   {
@@ -118,10 +144,24 @@ let all_product = [
     image: p5_img,
     new_price: 85.0,
     old_price: 120.5,
+    
     description: "A fun and cozy hooded top designed for women with nice color.",
+    size:["S","M","L","XL","XXL"],
+
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Tom", rating: 5, comment: "Great quality and my son loved it!" },
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year." },
+      { user: "John", rating: 3, comment: "Decent product, but the stitching could be better." },
+      { user: "Emily", rating: 5, comment: "Absolutely loved it! Perfect fit and amazing design." },
+      { user: "Sophia", rating: 4, comment: "Good value for money, but delivery was delayed." },
+      { user: "Michael", rating: 2, comment: "Not what I expected. The material feels cheap." },
+      { user: "Olivia", rating: 5, comment: "Exceeded my expectations! Will buy again." },
+      { user: "Daniel", rating: 3, comment: "Average product. The color faded after a few washes." },
+      { user: "Emma", rating: 4, comment: "Comfortable and stylish, but slightly overpriced." },
+      { user: "James", rating: 1, comment: "Terrible experience. The product arrived damaged." }
+
 
     ],
     total_reviews: 2
@@ -133,10 +173,25 @@ let all_product = [
     image: p6_img,
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+    available_stock:20,
+
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Ryan", rating: 5, comment: "Absolutely fantastic! The material feels premium." },
+      { user: "Jessica", rating: 3, comment: "It's decent, but I expected better quality at this price." },
+      { user: "Nathan", rating: 4, comment: "Nice design! Comfortable and fits well." },
+      { user: "Sophia", rating: 2, comment: "Not impressed. The stitching came undone after two wears." },
+      { user: "David", rating: 5, comment: "Worth every penny! I will definitely buy more." },
+      { user: "Emma", rating: 1, comment: "Terrible experience. Arrived late and was the wrong size." },
+      { user: "Oliver", rating: 4, comment: "Looks stylish, but runs slightly smaller than expected." },
+      { user: "Lucas", rating: 5, comment: "Perfect for everyday use! Soft and comfortable." },
+      { user: "Chloe", rating: 3, comment: "The fit is okay, but the fabric feels thinner than expected." },
+      { user: "Mason", rating: 4, comment: "Great product overall. Just wish it had more color options." }
+
 
     ],
     total_reviews: 2
@@ -148,10 +203,26 @@ let all_product = [
     image: p7_img,
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+    available_stock:20,
+
+
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Ryan", rating: 5, comment: "Absolutely fantastic! The material feels premium." },
+      { user: "Jessica", rating: 3, comment: "It's decent, but I expected better quality at this price." },
+      { user: "Nathan", rating: 4, comment: "Nice design! Comfortable and fits well." },
+      { user: "Sophia", rating: 2, comment: "Not impressed. The stitching came undone after two wears." },
+      { user: "David", rating: 5, comment: "Worth every penny! I will definitely buy more." },
+      { user: "Emma", rating: 1, comment: "Terrible experience. Arrived late and was the wrong size." },
+      { user: "Oliver", rating: 4, comment: "Looks stylish, but runs slightly smaller than expected." },
+      { user: "Lucas", rating: 5, comment: "Perfect for everyday use! Soft and comfortable." },
+      { user: "Chloe", rating: 3, comment: "The fit is okay, but the fabric feels thinner than expected." },
+      { user: "Mason", rating: 4, comment: "Great product overall. Just wish it had more color options." }
+
 
     ],
     total_reviews: 2
@@ -162,11 +233,25 @@ let all_product = [
     category: "women",
     image: p8_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ryan", rating: 5, comment: "Absolutely fantastic! The material feels premium." },
+      { user: "Jessica", rating: 3, comment: "It's decent, but I expected better quality at this price." },
+      { user: "Nathan", rating: 4, comment: "Nice design! Comfortable and fits well." },
+      { user: "Sophia", rating: 2, comment: "Not impressed. The stitching came undone after two wears." },
+      { user: "David", rating: 5, comment: "Worth every penny! I will definitely buy more." },
+      { user: "Emma", rating: 1, comment: "Terrible experience. Arrived late and was the wrong size." },
+      { user: "Oliver", rating: 4, comment: "Looks stylish, but runs slightly smaller than expected." },
+      { user: "Lucas", rating: 5, comment: "Perfect for everyday use! Soft and comfortable." },
+      { user: "Chloe", rating: 3, comment: "The fit is okay, but the fabric feels thinner than expected." },
+      { user: "Mason", rating: 4, comment: "Great product overall. Just wish it had more color options." }
 
     ],
     total_reviews: 2
@@ -177,11 +262,26 @@ let all_product = [
     category: "women",
     image: p9_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
+
 
     ],
     total_reviews: 2
@@ -191,12 +291,26 @@ let all_product = [
     name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
     category: "women",
     image: p10_img,
+    available_stock:20,
+
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2
@@ -206,12 +320,26 @@ let all_product = [
     name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
     category: "women",
     image: p11_img,
+    available_stock:20,
+
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2
@@ -221,13 +349,27 @@ let all_product = [
     name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
     category: "women",
     image: p12_img,
+    available_stock:20,
+
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
 
     description: "A cozy top for women flaunt your look to the world",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2
@@ -237,12 +379,28 @@ let all_product = [
     name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
     category: "men",
     image: p13_img,
+    available_stock:20,
+
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy hooded top designed for men with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Aiden", rating: 5, comment: "The quality is superb! Definitely worth the money." },
+      { user: "Ella", rating: 4, comment: "Very stylish, but the fabric could be a bit softer." },
+      { user: "Jacob", rating: 3, comment: "Not bad, but it doesn't look exactly like the picture." },
+      { user: "Lily", rating: 5, comment: "Absolutely in love with this! Feels premium and fits well." },
+      { user: "Matthew", rating: 2, comment: "Disappointed. The stitching started coming undone." },
+      { user: "Zoe", rating: 4, comment: "Great design, but runs a little small." },
+      { user: "Evan", rating: 5, comment: "Perfect for everyday wear! Will be buying again." },
+      { user: "Grace", rating: 3, comment: "Decent quality but expected a thicker fabric." },
+      { user: "Luke", rating: 1, comment: "Wouldn't recommend. Arrived damaged and late." },
+      { user: "Madison", rating: 4, comment: "Nice overall, just wish it had more color options." }
+
 
     ],
     total_reviews: 2
@@ -254,10 +412,26 @@ let all_product = [
     image: p14_img,
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+    available_stock:20,
+
+
     description: "A fun and cozy hooded top designed for men with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Ella", rating: 5, comment: "Absolutely amazing! The quality is fantastic." },
+      { user: "Liam", rating: 4, comment: "Good product, but I wish the fabric was a little thicker." },
+      { user: "Avery", rating: 3, comment: "Decent, but didn't quite meet my expectations." },
+      { user: "Mason", rating: 5, comment: "This exceeded all my expectations! Perfect buy." },
+      { user: "Charlotte", rating: 2, comment: "The color faded quickly after just a few washes." },
+      { user: "Samuel", rating: 4, comment: "Great value for money, but shipping took too long." },
+      { user: "Zoey", rating: 5, comment: "Super comfortable and stylish—definitely worth it!" },
+      { user: "Isaac", rating: 3, comment: "It's okay, but I wouldn't buy it again." },
+      { user: "Emily", rating: 1, comment: "Totally disappointed. Wrong size and poor quality." },
+      { user: "Connor", rating: 4, comment: "Nice fit, looks great, just wish there were more colors available." }
+
 
     ],
     total_reviews: 2
@@ -269,10 +443,26 @@ let all_product = [
     image: p15_img,
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+    available_stock:20,
+
+
     description: "A fun and cozy hooded top designed for men with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Ella", rating: 5, comment: "Absolutely amazing! The quality is fantastic." },
+      { user: "Liam", rating: 4, comment: "Good product, but I wish the fabric was a little thicker." },
+      { user: "Avery", rating: 3, comment: "Decent, but didn't quite meet my expectations." },
+      { user: "Mason", rating: 5, comment: "This exceeded all my expectations! Perfect buy." },
+      { user: "Charlotte", rating: 2, comment: "The color faded quickly after just a few washes." },
+      { user: "Samuel", rating: 4, comment: "Great value for money, but shipping took too long." },
+      { user: "Zoey", rating: 5, comment: "Super comfortable and stylish—definitely worth it!" },
+      { user: "Isaac", rating: 3, comment: "It's okay, but I wouldn't buy it again." },
+      { user: "Emily", rating: 1, comment: "Totally disappointed. Wrong size and poor quality." },
+      { user: "Connor", rating: 4, comment: "Nice fit, looks great, just wish there were more colors available." }
+
 
     ],
     total_reviews: 2
@@ -284,10 +474,25 @@ let all_product = [
     image: p16_img,
     new_price: 85.0,
     old_price: 120.5,
+    available_stock:20,
+
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy jacket for men to make sure you look awesome and cool in winters",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Aiden", rating: 5, comment: "The quality is superb! Definitely worth the money." },
+      { user: "Ella", rating: 4, comment: "Very stylish, but the fabric could be a bit softer." },
+      { user: "Jacob", rating: 3, comment: "Not bad, but it doesn't look exactly like the picture." },
+      { user: "Lily", rating: 5, comment: "Absolutely in love with this! Feels premium and fits well." },
+      { user: "Matthew", rating: 2, comment: "Disappointed. The stitching started coming undone." },
+      { user: "Zoe", rating: 4, comment: "Great design, but runs a little small." },
+      { user: "Evan", rating: 5, comment: "Perfect for everyday wear! Will be buying again." },
+      { user: "Grace", rating: 3, comment: "Decent quality but expected a thicker fabric." },
+      { user: "Luke", rating: 1, comment: "Wouldn't recommend. Arrived damaged and late." },
+      { user: "Madison", rating: 4, comment: "Nice overall, just wish it had more color options." }
+
 
     ],
     total_reviews: 2
@@ -297,12 +502,28 @@ let all_product = [
     name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
     category: "men",
     image: p17_img,
+    available_stock:20,
+
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy jacket for men to make sure you look awesome and cool in winters",
     reviews: [
-      { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this"},
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year"}
+      { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Aiden", rating: 5, comment: "The quality is superb! Definitely worth the money." },
+      { user: "Ella", rating: 4, comment: "Very stylish, but the fabric could be a bit softer." },
+      { user: "Jacob", rating: 3, comment: "Not bad, but it doesn't look exactly like the picture." },
+      { user: "Lily", rating: 5, comment: "Absolutely in love with this! Feels premium and fits well." },
+      { user: "Matthew", rating: 2, comment: "Disappointed. The stitching started coming undone." },
+      { user: "Zoe", rating: 4, comment: "Great design, but runs a little small." },
+      { user: "Evan", rating: 5, comment: "Perfect for everyday wear! Will be buying again." },
+      { user: "Grace", rating: 3, comment: "Decent quality but expected a thicker fabric." },
+      { user: "Luke", rating: 1, comment: "Wouldn't recommend. Arrived damaged and late." },
+      { user: "Madison", rating: 4, comment: "Nice overall, just wish it had more color options." }
+
 
     ],
     total_reviews: 2
@@ -313,11 +534,27 @@ let all_product = [
     category: "men",
     image: p18_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy jacket for men to make sure you look awesome and cool in winters",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Aiden", rating: 5, comment: "The quality is superb! Definitely worth the money." },
+      { user: "Ella", rating: 4, comment: "Very stylish, but the fabric could be a bit softer." },
+      { user: "Jacob", rating: 3, comment: "Not bad, but it doesn't look exactly like the picture." },
+      { user: "Lily", rating: 5, comment: "Absolutely in love with this! Feels premium and fits well." },
+      { user: "Matthew", rating: 2, comment: "Disappointed. The stitching started coming undone." },
+      { user: "Zoe", rating: 4, comment: "Great design, but runs a little small." },
+      { user: "Evan", rating: 5, comment: "Perfect for everyday wear! Will be buying again." },
+      { user: "Grace", rating: 3, comment: "Decent quality but expected a thicker fabric." },
+      { user: "Luke", rating: 1, comment: "Wouldn't recommend. Arrived damaged and late." },
+      { user: "Madison", rating: 4, comment: "Nice overall, just wish it had more color options." }
+
 
     ],
     total_reviews: 2
@@ -328,11 +565,27 @@ let all_product = [
     category: "men",
     image: p19_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy jacket for men to make sure you look awesome and cool in winters",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Aiden", rating: 5, comment: "The quality is superb! Definitely worth the money." },
+      { user: "Ella", rating: 4, comment: "Very stylish, but the fabric could be a bit softer." },
+      { user: "Jacob", rating: 3, comment: "Not bad, but it doesn't look exactly like the picture." },
+      { user: "Lily", rating: 5, comment: "Absolutely in love with this! Feels premium and fits well." },
+      { user: "Matthew", rating: 2, comment: "Disappointed. The stitching started coming undone." },
+      { user: "Zoe", rating: 4, comment: "Great design, but runs a little small." },
+      { user: "Evan", rating: 5, comment: "Perfect for everyday wear! Will be buying again." },
+      { user: "Grace", rating: 3, comment: "Decent quality but expected a thicker fabric." },
+      { user: "Luke", rating: 1, comment: "Wouldn't recommend. Arrived damaged and late." },
+      { user: "Madison", rating: 4, comment: "Nice overall, just wish it had more color options." }
+
 
     ],
     total_reviews: 2
@@ -342,12 +595,29 @@ let all_product = [
     name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
     category: "men",
     image: p20_img,
+    available_stock:20,
+
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy jacket for men to make sure you look awesome and cool in winters",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Benjamin", rating: 5, comment: "Absolutely love it! The material is top-notch." },
+      { user: "Sophia", rating: 3, comment: "Not bad, but I expected better quality for the price." },
+      { user: "Dylan", rating: 4, comment: "Looks great! Slightly snug fit, but overall nice." },
+      { user: "Emma", rating: 2, comment: "Color faded after washing. Disappointed." },
+      { user: "William", rating: 5, comment: "Super comfortable! Feels amazing to wear." },
+      { user: "Hannah", rating: 3, comment: "Decent, but could have better stitching." },
+      { user: "Daniel", rating: 4, comment: "Great style! Would recommend, but check sizing first." },
+      { user: "Olivia", rating: 1, comment: "Poor packaging, arrived damaged." },
+      { user: "Liam", rating: 5, comment: "Perfect! I'm buying another one!" },
+      { user: "Isabella", rating: 4, comment: "Really stylish, but took too long to arrive." }
+
+
 
     ],
     total_reviews: 2
@@ -357,12 +627,28 @@ let all_product = [
     name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
     category: "men",
     image: p21_img,
+    available_stock:20,
+
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy jacket for men to make sure you look awesome and cool in winters",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Benjamin", rating: 5, comment: "Absolutely love it! The material is top-notch." },
+      { user: "Sophia", rating: 3, comment: "Not bad, but I expected better quality for the price." },
+      { user: "Dylan", rating: 4, comment: "Looks great! Slightly snug fit, but overall nice." },
+      { user: "Emma", rating: 2, comment: "Color faded after washing. Disappointed." },
+      { user: "William", rating: 5, comment: "Super comfortable! Feels amazing to wear." },
+      { user: "Hannah", rating: 3, comment: "Decent, but could have better stitching." },
+      { user: "Daniel", rating: 4, comment: "Great style! Would recommend, but check sizing first." },
+      { user: "Olivia", rating: 1, comment: "Poor packaging, arrived damaged." },
+      { user: "Liam", rating: 5, comment: "Perfect! I'm buying another one!" },
+      { user: "Isabella", rating: 4, comment: "Really stylish, but took too long to arrive." }
+
+
 
     ],
     total_reviews: 2
@@ -373,11 +659,28 @@ let all_product = [
     category: "men",
     image: p22_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy jacket for men to make sure you look awesome and cool in winters",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Benjamin", rating: 5, comment: "Absolutely love it! The material is top-notch." },
+      { user: "Sophia", rating: 3, comment: "Not bad, but I expected better quality for the price." },
+      { user: "Dylan", rating: 4, comment: "Looks great! Slightly snug fit, but overall nice." },
+      { user: "Emma", rating: 2, comment: "Color faded after washing. Disappointed." },
+      { user: "William", rating: 5, comment: "Super comfortable! Feels amazing to wear." },
+      { user: "Hannah", rating: 3, comment: "Decent, but could have better stitching." },
+      { user: "Daniel", rating: 4, comment: "Great style! Would recommend, but check sizing first." },
+      { user: "Olivia", rating: 1, comment: "Poor packaging, arrived damaged." },
+      { user: "Liam", rating: 5, comment: "Perfect! I'm buying another one!" },
+      { user: "Isabella", rating: 4, comment: "Really stylish, but took too long to arrive." }
+
+
 
     ],
     total_reviews: 2
@@ -388,11 +691,28 @@ let all_product = [
     category: "men",
     image: p23_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy jacket for men to make sure you look awesome and cool in winters",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
       { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      ,
+      { user: "Benjamin", rating: 5, comment: "Absolutely love it! The material is top-notch." },
+      { user: "Sophia", rating: 3, comment: "Not bad, but I expected better quality for the price." },
+      { user: "Dylan", rating: 4, comment: "Looks great! Slightly snug fit, but overall nice." },
+      { user: "Emma", rating: 2, comment: "Color faded after washing. Disappointed." },
+      { user: "William", rating: 5, comment: "Super comfortable! Feels amazing to wear." },
+      { user: "Hannah", rating: 3, comment: "Decent, but could have better stitching." },
+      { user: "Daniel", rating: 4, comment: "Great style! Would recommend, but check sizing first." },
+      { user: "Olivia", rating: 1, comment: "Poor packaging, arrived damaged." },
+      { user: "Liam", rating: 5, comment: "Perfect! I'm buying another one!" },
+      { user: "Isabella", rating: 4, comment: "Really stylish, but took too long to arrive." }
+
+
 
     ],
     total_reviews: 2
@@ -404,10 +724,27 @@ let all_product = [
     image: p24_img,
     new_price: 85.0,
     old_price: 120.5,
+    available_stock:20,
+
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy jacket for men to make sure you look awesome and cool in winters",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Benjamin", rating: 5, comment: "Absolutely love it! The material is top-notch." },
+      { user: "Sophia", rating: 3, comment: "Not bad, but I expected better quality for the price." },
+      { user: "Dylan", rating: 4, comment: "Looks great! Slightly snug fit, but overall nice." },
+      { user: "Emma", rating: 2, comment: "Color faded after washing. Disappointed." },
+      { user: "William", rating: 5, comment: "Super comfortable! Feels amazing to wear." },
+      { user: "Hannah", rating: 3, comment: "Decent, but could have better stitching." },
+      { user: "Daniel", rating: 4, comment: "Great style! Would recommend, but check sizing first." },
+      { user: "Olivia", rating: 1, comment: "Poor packaging, arrived damaged." },
+      { user: "Liam", rating: 5, comment: "Perfect! I'm buying another one!" },
+      { user: "Isabella", rating: 4, comment: "Really stylish, but took too long to arrive." }
+
+
 
     ],
     total_reviews: 2
@@ -419,10 +756,27 @@ let all_product = [
     image: p25_img,
     new_price: 85.0,
     old_price: 120.5,
+    available_stock:20,
+
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Benjamin", rating: 5, comment: "Absolutely love it! The material is top-notch." },
+      { user: "Sophia", rating: 3, comment: "Not bad, but I expected better quality for the price." },
+      { user: "Dylan", rating: 4, comment: "Looks great! Slightly snug fit, but overall nice." },
+      { user: "Emma", rating: 2, comment: "Color faded after washing. Disappointed." },
+      { user: "William", rating: 5, comment: "Super comfortable! Feels amazing to wear." },
+      { user: "Hannah", rating: 3, comment: "Decent, but could have better stitching." },
+      { user: "Daniel", rating: 4, comment: "Great style! Would recommend, but check sizing first." },
+      { user: "Olivia", rating: 1, comment: "Poor packaging, arrived damaged." },
+      { user: "Liam", rating: 5, comment: "Perfect! I'm buying another one!" },
+      { user: "Isabella", rating: 4, comment: "Really stylish, but took too long to arrive." }
+
+
 
     ],
     total_reviews: 2
@@ -434,10 +788,27 @@ let all_product = [
     image: p26_img,
     new_price: 85.0,
     old_price: 120.5,
+    available_stock:20,
+
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Benjamin", rating: 5, comment: "Absolutely love it! The material is top-notch." },
+      { user: "Sophia", rating: 3, comment: "Not bad, but I expected better quality for the price." },
+      { user: "Dylan", rating: 4, comment: "Looks great! Slightly snug fit, but overall nice." },
+      { user: "Emma", rating: 2, comment: "Color faded after washing. Disappointed." },
+      { user: "William", rating: 5, comment: "Super comfortable! Feels amazing to wear." },
+      { user: "Hannah", rating: 3, comment: "Decent, but could have better stitching." },
+      { user: "Daniel", rating: 4, comment: "Great style! Would recommend, but check sizing first." },
+      { user: "Olivia", rating: 1, comment: "Poor packaging, arrived damaged." },
+      { user: "Liam", rating: 5, comment: "Perfect! I'm buying another one!" },
+      { user: "Isabella", rating: 4, comment: "Really stylish, but took too long to arrive." }
+
+
 
     ],
     total_reviews: 2
@@ -448,11 +819,28 @@ let all_product = [
     category: "kid",
     image: p27_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Benjamin", rating: 5, comment: "Absolutely love it! The material is top-notch." },
+      { user: "Sophia", rating: 3, comment: "Not bad, but I expected better quality for the price." },
+      { user: "Dylan", rating: 4, comment: "Looks great! Slightly snug fit, but overall nice." },
+      { user: "Emma", rating: 2, comment: "Color faded after washing. Disappointed." },
+      { user: "William", rating: 5, comment: "Super comfortable! Feels amazing to wear." },
+      { user: "Hannah", rating: 3, comment: "Decent, but could have better stitching." },
+      { user: "Daniel", rating: 4, comment: "Great style! Would recommend, but check sizing first." },
+      { user: "Olivia", rating: 1, comment: "Poor packaging, arrived damaged." },
+      { user: "Liam", rating: 5, comment: "Perfect! I'm buying another one!" },
+      { user: "Isabella", rating: 4, comment: "Really stylish, but took too long to arrive." }
+
+
 
     ],
     total_reviews: 2
@@ -463,11 +851,27 @@ let all_product = [
     category: "kid",
     image: p28_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+
+      { user: "Benjamin", rating: 5, comment: "Absolutely love it! The material is top-notch." },
+      { user: "Sophia", rating: 3, comment: "Not bad, but I expected better quality for the price." },
+      { user: "Dylan", rating: 4, comment: "Looks great! Slightly snug fit, but overall nice." },
+      { user: "Emma", rating: 2, comment: "Color faded after washing. Disappointed." },
+      { user: "William", rating: 5, comment: "Super comfortable! Feels amazing to wear." },
+      { user: "Hannah", rating: 3, comment: "Decent, but could have better stitching." },
+      { user: "Daniel", rating: 4, comment: "Great style! Would recommend, but check sizing first." },
+      { user: "Olivia", rating: 1, comment: "Poor packaging, arrived damaged." },
+      { user: "Liam", rating: 5, comment: "Perfect! I'm buying another one!" },
+      { user: "Isabella", rating: 4, comment: "Really stylish, but took too long to arrive." }
+
 
     ],
     total_reviews: 2
@@ -479,10 +883,24 @@ let all_product = [
     image: p29_img,
     new_price: 85.0,
     old_price: 120.5,
+    available_stock:20,
+
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2
@@ -493,11 +911,25 @@ let all_product = [
     category: "kid",
     image: p30_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2
@@ -508,11 +940,25 @@ let all_product = [
     category: "kid",
     image: p31_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2
@@ -523,11 +969,25 @@ let all_product = [
     category: "kid",
     image: p32_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2
@@ -537,12 +997,26 @@ let all_product = [
     name: "Boys Orange Colourblocked Hooded Sweatshirt",
     category: "kid",
     image: p33_img,
+    available_stock:20,
+
     new_price: 85.0,
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2
@@ -554,10 +1028,24 @@ let all_product = [
     image: p34_img,
     new_price: 85.0,
     old_price: 120.5,
+    available_stock:20,
+
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2
@@ -568,11 +1056,25 @@ let all_product = [
     category: "kid",
     image: p35_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2
@@ -583,11 +1085,25 @@ let all_product = [
     category: "kid",
     image: p36_img,
     new_price: 85.0,
+    available_stock:20,
+
     old_price: 120.5,
+    size:["S","M","L","XL","XXL"],
+
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
-      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" }
+      { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
+      { user: "Ethan", rating: 5, comment: "Amazing quality! Exceeded my expectations." },
+      { user: "Sarah", rating: 4, comment: "Really nice, but took a while to be delivered." },
+      { user: "Jake", rating: 3, comment: "Decent for the price, but nothing special." },
+      { user: "Mia", rating: 5, comment: "Soft and comfortable—perfect for daily wear!" },
+      { user: "Liam", rating: 2, comment: "Not worth the hype. Fabric feels rough." },
+      { user: "Olivia", rating: 4, comment: "Stylish design, but I wish it was slightly cheaper." },
+      { user: "Noah", rating: 5, comment: "Absolutely love it! Planning to buy more." },
+      { user: "Ava", rating: 3, comment: "Looks good, but the stitching isn’t the best." },
+      { user: "James", rating: 1, comment: "Disappointed. Arrived damaged and unwearable." },
+      { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
     total_reviews: 2

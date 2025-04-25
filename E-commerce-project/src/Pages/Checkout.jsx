@@ -72,6 +72,14 @@ const Checkout = () => {
 // alert("Please place your order first before downloading the invoice.");
       return;
     }
+    else{
+      toast.success(` Invoice Downloaded Successfully!`, {
+        position: "top-left",
+        autoClose: 1000,
+        hideProgressBar: true,
+        theme: "colored",
+    });
+    }
 
     const pdf = new jsPDF();
     
@@ -94,7 +102,7 @@ const Checkout = () => {
     pdf.setFont("helvetica", "bold");
     pdf.text(`Total: $${totalAmount}`, 20, 100);
 
-    pdf.save("invoice.pdf");
+    pdf.save("Invoice.pdf");
   };
 
   return (
@@ -126,7 +134,7 @@ const Checkout = () => {
         <p>Payment Method: <span className="font-semibold">{formData.paymentMethod}</span></p>
     
         <p>Shipping Charges: <span className="font-semibold">{shippingMethod === "road" ? "Free" : `$${shippingMethod === "normal" ? "5" : shippingMethod === "express" ? "10" : "20"}`}</span></p>
-        <h3 className="font-bold text-lg mt-2">Total Amount:${totalAmount}</h3>
+        <h3 className="font-bold text-lg mt-2">Total Amount: ${totalAmount}</h3>
       </div>
 
       {/* Shipping Selection */}

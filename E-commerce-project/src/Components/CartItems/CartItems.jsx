@@ -3,7 +3,7 @@ import { ShopContext } from '../../Context/ShopContext'
 import remove_icon from "../../assets/cart_cross_icon.png"
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CartItems = () => {
   const navigate = useNavigate()
@@ -15,7 +15,7 @@ const CartItems = () => {
   const availableCoupons = [
     { code: "DISCOUNT10", discount: 10, description: "Get 10% off your purchase!" },
     { code: "SAVE20", discount: 20, description: "Save 20% on orders over $100!" },
-    // { code: "FREESHIP", discount: 0, description: "Enjoy free shipping!" }
+    { code: "WELCOME15", discount: 15, description: "Enjoy 15% discounts on your purchase!" }
   ];
 
   const applyCoupon = (couponCode) => {

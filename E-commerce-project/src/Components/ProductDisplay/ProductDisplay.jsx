@@ -1,7 +1,12 @@
 import React, { useContext, useState } from 'react';
-import star_icon from '../../assets/star_icon.png';
-import star_dull_icon from '../../assets/star_dull_icon.png';
+import { useEffect } from 'react';
 import { ShopContext } from '../../Context/ShopContext';
+import one_star from "../../assets/one_star.png"
+import two_star from "../../assets/two_star.png"
+import three_star from "../../assets/three_star.png"
+import four_star from "../../assets/four_star.png"
+import five_star from "../../assets/five_star.png"
+import { NavLink } from 'react-router-dom';
 
 const ProductDisplay = ({ product }) => {
   const [position, setPosition] = useState({
@@ -11,7 +16,21 @@ const ProductDisplay = ({ product }) => {
     width: 0,
     height: 0,
   });
-  const [size, setSize] = useState([{}]);
+  const [averageRating, setAverageRating] = useState(0)
+  const [stock, setStock] = useState(0)
+
+  useEffect(() => {
+    setStock(product.available_stock);
+  }, [product]);
+
+  useEffect(() => {
+    if (product?.reviews?.length) {
+      const totalRating = product.reviews.reduce((acc, review) => acc + review.rating, 0);
+      const average = totalRating / product.reviews.length;
+      setAverageRating(average.toFixed(1));
+    }
+  }, [product]);
+
   const { addToCart } = useContext(ShopContext);
 
   function handleMouse(e) {
@@ -63,7 +82,7 @@ const ProductDisplay = ({ product }) => {
             />
           )}
           <img
-            className="w-full md:w-95"
+            className="w-full md:w-95 hover:cursor-zoom-in"
             onMouseLeave={handleMouseLeave}
             onMouseMove={handleMouse}
             src={product.image}
@@ -77,16 +96,20 @@ const ProductDisplay = ({ product }) => {
         <h1 className="text-3xl md:text-5xl text-[#3d3d3d]">{product.name}</h1>
 
         {/* Star Ratings */}
-        <div className="productdisplay-right-star flex items-center gap-2 mt-4">
-          {[...Array(5)].map((_, i) => (
-            <img key={i} src={star_icon} alt="" className="w-5 md:w-6" />
-          ))}
-          <img src={star_dull_icon} alt="" className="w-5 md:w-6" />
-          <p className="text-xl">{product.total_reviews}</p>
+        <div className="productdisplay-right-star flex items-center w-60 h-15 gap-2 mt-4">
+
+          <img src={
+            averageRating <= 1 ? one_star :
+              averageRating > 1 && averageRating <= 2 ? two_star :
+                averageRating > 2 && averageRating <= 3 ? three_star :
+                  averageRating > 3 && averageRating <= 4 ? four_star :
+                    five_star
+          } alt="" className='w-40 h-5 ' />
+          <p style={{ backgroundColor: averageRating <= 1 ? "red" : averageRating > 1 && averageRating <= 2 ? "orange" : averageRating > 2 && averageRating <= 3 ? "yellowgreen" : averageRating > 3 && averageRating <= 4 ? "orange" : averageRating > 4 && averageRating <= 5 ? "green" : "" }} className="text-lg font-medium  align-center h-10 py-1 text-center w-15">{averageRating}</p>
         </div>
 
         {/* Prices */}
-        <div className="flex gap-5 text-lg md:text-xl font-medium mt-4">
+        <div className="flex gap-5 text-lg md:text-xl font-medium">
           <span className="line-through text-[#818181]">${product.old_price}</span>
           <span className="text-[#ff4141]">${product.new_price}</span>
         </div>
@@ -100,23 +123,26 @@ const ProductDisplay = ({ product }) => {
         <div className="productdisplay-right-size mt-10">
           <h2 className="text-lg md:text-xl text-[#656565] font-medium">Select Size</h2>
           <div className="flex gap-3 md:gap-5 mt-4">
-            {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
-              <div
-                key={size}
-                className="p-3 md:p-4 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer"
-              >
-                {size}
-              </div>
+            {['S', 'M', 'L', 'XL', 'XXL'].map((size, index) => (
+              <NavLink key={size}  disabled={stock <= 0} style={({ isActive }) => isActive ? { backgroundColor: "black", color: "white" } : {}} to={`/product/${product.id}/${product.size[index]}`} className='p-3 md:p-4 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer'>{size}</NavLink>
             ))}
+            <p className="mt-4 text-xl md:text-base text-green-600">
+              {stock > 0 ? `In Stock (${stock})` : 'Out of Stock'}
+            </p>
           </div>
         </div>
 
         {/* Add to Cart Button */}
         <button
           onClick={() => {
-            addToCart(product.id);
+            addToCart(product.id, setStock);
           }}
           className="mt-6 px-6 py-3 text-sm md:text-base bg-[#ff4141] text-white rounded hover:bg-red-700"
+          disabled={stock <= 0}
+          style={{
+            cursor: stock > 0 ? 'pointer' : 'not-allowed',
+            backgroundColor: stock > 0 ? '#ff4141' : '#ccc',
+          }}
         >
           ADD TO CART
         </button>

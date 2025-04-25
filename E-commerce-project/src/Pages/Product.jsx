@@ -8,7 +8,11 @@ import ReleatedPoducts from '../Components/ReleatedProducts/ReleatedPoducts';
 const Product = () => {
     const all_product = useContext(ShopContext)
     const { productId } = useParams()
-    const product = all_product.all_product.find((e) => e.id == Number(productId))
+    console.log(productId);
+    const {size}= useParams()
+    console.log(size);
+    const product = all_product.all_product.find((e) => e.id == Number(productId));
+    console.log(product);
 
 
     return (

@@ -16,10 +16,15 @@ const getDefaultCart = () => {
 const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart());
     const [num, setNum] = useState(0);
+   
 
-    const addToCart = (itemId) => {
+
+    const addToCart = (itemId,setStock) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         setNum((prev) => prev + 1);
+        setStock((prev) => prev - 1); // Decrease stock by 1 when item is added to cart
+
+   
 
         let itemInfo = all_product.find((product) => product.id === Number(itemId));
         toast.success(`${itemInfo.name} added to cart!`, {
@@ -32,18 +37,19 @@ const ShopContextProvider = (props) => {
         });
     };
 
-    const removeFromCart = (itemId) => {
+    const removeFromCart = (itemId,setStock) => {
         if (cartItems[itemId] > 0) {
             setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
             setNum((prev) => prev - 1);
+            setStock((prev) => prev + 1); // Increase stock by 1 when item is removed from cart
 
             let itemInfo = all_product.find((product) => product.id === Number(itemId));
             toast.info(`${itemInfo.name} removed from cart!`, {
                 position: "top-left",
                 autoClose: 1000,
                 hideProgressBar: true,
-          
-            // theme: "colored",
+
+                // theme: "colored",
 
 
 
@@ -64,7 +70,7 @@ const ShopContextProvider = (props) => {
         return totalAmount;
     };
 
-    const contextValue = { num, getTotalCartAmount, all_product, cartItems, addToCart, removeFromCart };
+    const contextValue = { num, getTotalCartAmount, all_product, cartItems, addToCart, removeFromCart,  };
 
     return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>;
 };
