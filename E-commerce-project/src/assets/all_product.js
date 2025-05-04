@@ -44,8 +44,14 @@ let all_product = [
     size:["S","M","L","XL","XXL"],
     new_price: 50.0,
     old_price: 80.5,
-    available_stock:20,
-
+    available_stock:70,
+    stock_per_size: {
+      S: 20,
+      M: 10,
+      L: 20,
+      XL: 10,
+      XXL: 10
+    },
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 1, comment: "Great quality and my son loves it!" },
@@ -63,7 +69,14 @@ let all_product = [
     image: p2_img,
     new_price: 85.0,
     old_price: 120.5,
-    available_stock:70,
+    stock_per_size: {
+      S: 20,
+      M: 10,
+      L: 20,
+      XL: 10,
+      XXL: 10
+    },
+    available_stock: 70,
     size:["S","M","L","XL","XXL"],
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
@@ -86,9 +99,16 @@ let all_product = [
     category: "women",
     image: p3_img,
     new_price: 60.0,
-    available_stock:39,
+    available_stock:70,
     old_price: 100.5,
     size:["S","M","L","XL","XXL"],
+    stock_per_size: {
+      S: 20,
+      M: 10,
+      L: 20,
+      XL: 10,
+      XXL: 10
+    },
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },

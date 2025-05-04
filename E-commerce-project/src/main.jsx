@@ -13,6 +13,8 @@ import men_banner from "./assets/banner_mens.png"
 import women_banner from "./assets/banner_women.png"
 import kid_banner from "./assets/banner_kids.png"
 import Checkout from './Pages/Checkout.jsx'
+import Profile from './Pages/Profile.jsx'
+import SizePage from './Pages/SizePage.jsx'
 const routes = createBrowserRouter([{
   path: "/",
   element:  <ShopContextProvider> <App/> </ShopContextProvider>,
@@ -40,13 +42,10 @@ const routes = createBrowserRouter([{
   {
     path: "/product/:productId",
     element: <Product/>,
-    children:[
-      {
-        path: "/product/:productId/:size",
-        element: <Product/>
-      }
-
-    ]
+  },
+  {
+    path: "/size/:size",
+    element: <SizePage/>
   },
   {
     path: "/cart",
@@ -64,7 +63,11 @@ const routes = createBrowserRouter([{
   {
     path: "/login",
     element:<Login/>
-  }
+  },
+  {
+    path: "/profile",
+    element:<Profile/>
+    }
 
 
   ]}]

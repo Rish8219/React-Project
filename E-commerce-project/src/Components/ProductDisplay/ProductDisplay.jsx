@@ -1,14 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { ShopContext } from '../../Context/ShopContext';
-import one_star from "../../assets/one_star.png"
-import two_star from "../../assets/two_star.png"
-import three_star from "../../assets/three_star.png"
-import four_star from "../../assets/four_star.png"
-import five_star from "../../assets/five_star.png"
-import { NavLink } from 'react-router-dom';
+import one_star from "../../assets/one_star.png";
+import two_star from "../../assets/two_star.png";
+import three_star from "../../assets/three_star.png";
+import four_star from "../../assets/four_star.png";
+import five_star from "../../assets/five_star.png";
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const ProductDisplay = ({ product }) => {
+const ProductDisplay = ({ product, selectedSize: selectedSizeProp }) => {
   const [position, setPosition] = useState({
     x: 0,
     y: 0,
@@ -16,12 +15,26 @@ const ProductDisplay = ({ product }) => {
     width: 0,
     height: 0,
   });
-  const [averageRating, setAverageRating] = useState(0)
-  const [stock, setStock] = useState(0)
+  const [averageRating, setAverageRating] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(selectedSizeProp || (product.size && product.size.length > 0 ? product.size[0] : null));
+
+  const { addToCart, stock: globalStock } = useContext(ShopContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    setStock(product.available_stock);
-  }, [product]);
+    if (selectedSizeProp && selectedSizeProp !== selectedSize) {
+      setSelectedSize(selectedSizeProp);
+    }
+  }, [selectedSizeProp]);
+
+  const getCurrentStock = () => {
+    const globalStockValue = globalStock[product.id]?.[selectedSize];
+    const productStockValue = product.stock_per_size ? product.stock_per_size[selectedSize] : undefined;
+    return globalStockValue !== undefined ? globalStockValue : (productStockValue !== undefined ? productStockValue : 0);
+  };
+
+  const stock = getCurrentStock();
 
   useEffect(() => {
     if (product?.reviews?.length) {
@@ -30,8 +43,6 @@ const ProductDisplay = ({ product }) => {
       setAverageRating(average.toFixed(1));
     }
   }, [product]);
-
-  const { addToCart } = useContext(ShopContext);
 
   function handleMouse(e) {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -49,6 +60,14 @@ const ProductDisplay = ({ product }) => {
 
   const handleMouseLeave = () => {
     setPosition({ x: 0, y: 0, visible: false, width: 0, height: 0 });
+  };
+
+  const handleSizeSelect = (size) => {
+    setSelectedSize(size);
+    // Update URL query parameter without navigation
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set('size', size);
+    navigate({ pathname: location.pathname, search: searchParams.toString() }, { replace: true });
   };
 
   return (
@@ -123,11 +142,25 @@ const ProductDisplay = ({ product }) => {
         <div className="productdisplay-right-size mt-10">
           <h2 className="text-lg md:text-xl text-[#656565] font-medium">Select Size</h2>
           <div className="flex gap-3 md:gap-5 mt-4">
-            {['S', 'M', 'L', 'XL', 'XXL'].map((size, index) => (
-              <NavLink key={size}  disabled={stock <= 0} style={({ isActive }) => isActive ? { backgroundColor: "black", color: "white" } : {}} to={`/product/${product.id}/${product.size[index]}`} className='p-3 md:p-4 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer'>{size}</NavLink>
-            ))}
+            {product.size && product.size.map((size) => {
+              const sizeStock = globalStock[product.id]?.[size] ?? product.stock_per_size?.[size] ?? 0;
+              return (
+                <div key={size} className="flex flex-col items-center">
+                  <button
+                    onClick={() => handleSizeSelect(size)}
+                    className={`p-3 md:p-4 border rounded-lg cursor-pointer ${selectedSize === size ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}
+                    disabled={sizeStock <= 0}
+                  >
+                    {size}
+                  </button>
+                  <span className="text-sm mt-1 text-green-600">
+                    {sizeStock > 0 ? `In Stock (${sizeStock})` : 'Not available'}
+                  </span>
+                </div>
+              );
+            })}
             <p className="mt-4 text-xl md:text-base text-green-600">
-              {stock > 0 ? `In Stock (${stock})` : 'Out of Stock'}
+              {stock > 0 ? `In Stock (${stock})` : 'Not available in stock'}
             </p>
           </div>
         </div>
@@ -135,7 +168,7 @@ const ProductDisplay = ({ product }) => {
         {/* Add to Cart Button */}
         <button
           onClick={() => {
-            addToCart(product.id, setStock);
+            addToCart(product.id, selectedSize);
           }}
           className="mt-6 px-6 py-3 text-sm md:text-base bg-[#ff4141] text-white rounded hover:bg-red-700"
           disabled={stock <= 0}

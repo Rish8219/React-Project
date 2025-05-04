@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { ShopContext } from '../../Context/ShopContext'
 import remove_icon from "../../assets/cart_cross_icon.png"
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -68,7 +68,8 @@ const CartItems = () => {
     }
 
     setOffer("");
-};
+  };
+
   const totalAmount = getTotalCartAmount();
   //setting cart total in local storage
   const discountedAmount = totalAmount - (totalAmount * discount);
@@ -89,7 +90,7 @@ const CartItems = () => {
       });
     } else {
       // Proceed to checkout logic here
-    navigate("/checkout")
+      navigate("/checkout")
       toast.success("Proceeding to checkout...", {
         position: "top-left",
         autoClose: 1000,
@@ -98,6 +99,20 @@ const CartItems = () => {
       });
     }
   }
+
+  // Create a map of productId to array of sizes and quantities in cart
+  const cartItemsByProduct = {};
+  Object.entries(cartItems).forEach(([key, quantity]) => {
+    if (quantity > 0) {
+      const [productIdStr, size] = key.split("-");
+      const productId = Number(productIdStr);
+      if (!cartItemsByProduct[productId]) {
+        cartItemsByProduct[productId] = [];
+      }
+      cartItemsByProduct[productId].push({ size, quantity });
+    }
+  });
+
   return (
     <div className="cartitems w-full max-w-screen-xl pt-20 mx-auto px-6 py-10">
       <h1 className="text-2xl font-bold text-center mb-6">Your Shopping Cart</h1>
@@ -114,18 +129,25 @@ const CartItems = () => {
 
       {/* Product Items */}
       {all_product.map((item) => (
-        cartItems[item.id] > 0 && (
-          <div key={item.id} className="w-full">
-            <div className="grid grid-cols-6 gap-4 content-center justify-items-center items-center text-[#454545] p-4 border-b">
-              <img src={item.image} alt="" className="w-16 h-auto mx-auto" />
-              <p className="text-sm">{item.name}</p>
-              <p className="text-sm">${item.new_price}</p>
-              <button className="w-16 h-8 border rounded-md border-gray-300">{cartItems[item.id]}</button>
-              <p className="text-sm">${item.new_price * cartItems[item.id]}</p>
-              <img className="w-5 cursor-pointer mx-auto" src={remove_icon} onClick={() => removeFromCart(item.id)} alt="Remove" />
+        cartItemsByProduct[item.id] ? (
+          cartItemsByProduct[item.id].map(({ size, quantity }) => (
+            <div key={`${item.id}-${size}`} className="w-full">
+              <div className="grid grid-cols-6 gap-4 content-center justify-items-center items-center text-[#454545] p-4 border-b">
+                <img src={item.image} alt="" className="w-16 h-auto mx-auto" />
+                <p className="text-sm">{item.name} {size ? `(${size})` : ""}</p>
+                <p className="text-sm">${item.new_price}</p>
+                <button className="w-16 h-8 border rounded-md border-gray-300">{quantity}</button>
+                <p className="text-sm">${item.new_price * quantity}</p>
+                <img
+                  className="w-5 cursor-pointer mx-auto"
+                  src={remove_icon}
+                  onClick={() => removeFromCart(`${item.id}-${size}`)}
+                  alt="Remove"
+                />
+              </div>
             </div>
-          </div>
-        )
+          ))
+        ) : null
       ))}
 
       {/* Cart Totals */}

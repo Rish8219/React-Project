@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { jsPDF } from "jspdf";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
+import { ShopContext } from "../Context/ShopContext";
+import { useNavigate } from "react-router-dom";
+
 const Checkout = () => {
+  const { user, cartItems, all_product, setCartItems } = useContext(ShopContext);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,6 +28,16 @@ const Checkout = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        ...formData,
+        name: user.name || "",
+        email: user.email || "",
+      });
+    }
+  }, [user]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -40,7 +56,17 @@ const Checkout = () => {
   };
 
   const handleOrderPlacement = () => {
-    setOrderPlaced(true);
+    if (!user) {
+      toast.error("You must be logged in to place an order.", {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: true,
+        theme: "colored",
+      });
+      navigate("/login");
+      return;
+    }
+
     if ( !formData.name || !formData.email || !formData.address || !formData.city || !formData.zip) {
       toast.error(`Please fill all the fields!`, {
         position: "top-left",
@@ -50,39 +76,92 @@ const Checkout = () => {
       });
       return;
     }
-    else{
-      toast.success(` Your Order Placed Sucessfully!`, {
-        position: "top-left",
-        autoClose: 1000,
-        hideProgressBar: true,
-        theme: "colored",
-    });
+
+    // Save order to localStorage
+    const orders = localStorage.getItem("orders");
+    const allOrders = orders ? JSON.parse(orders) : [];
+
+    // Prepare order items with size info
+    const items = [];
+    for (const itemKey in cartItems) {
+      if (cartItems[itemKey] > 0) {
+        const [itemIdStr, size] = itemKey.split("-");
+        const product = all_product.find(p => p.id === Number(itemIdStr));
+        if (product) {
+          items.push({
+            id: product.id,
+            name: product.name,
+            size: size || null,
+            quantity: cartItems[itemKey],
+            price: product.new_price,
+          });
+        }
+      }
     }
 
+    const newOrder = {
+      date: new Date().toISOString(),
+      name: formData.name,
+      email: formData.email,
+      address: formData.address,
+      city: formData.city,
+      zip: formData.zip,
+      paymentMethod: formData.paymentMethod,
+      totalAmount,
+      items,
+    };
+
+    allOrders.push(newOrder);
+    localStorage.setItem("orders", JSON.stringify(allOrders));
+
+    setOrderPlaced(true);
+    toast.success(`Your Order Placed Successfully!`, {
+      position: "top-left",
+      autoClose: 1000,
+      hideProgressBar: true,
+      theme: "colored",
+    });
+
+    // Clear cart after order
+    setCartItems(() => {
+      const emptyCart = {};
+      for (let product of all_product) {
+        if (product.size && product.size.length > 0) {
+          product.size.forEach((size) => {
+            const key = `${product.id}-${size}`;
+            emptyCart[key] = 0;
+          });
+        } else {
+          emptyCart[product.id] = 0;
+        }
+      }
+      return emptyCart;
+    });
+
+    // Navigate to profile page after successful order placement
+    navigate("/profile");
   };
 
   const generateInvoicePDF = () => {
-    if (orderPlaced === false && !formData.name || !formData.email || !formData.address || !formData.city || !formData.zip) {
- toast.error(`Place Your Order First!`, {
-            position: "top-left",
-            autoClose: 1000,
-            hideProgressBar: true,
-            theme: "colored",
-        });
-// alert("Please place your order first before downloading the invoice.");
-      return;
-    }
-    else{
-      toast.success(` Invoice Downloaded Successfully!`, {
+    if (!orderPlaced) {
+      toast.error(`Place Your Order First!`, {
         position: "top-left",
         autoClose: 1000,
         hideProgressBar: true,
         theme: "colored",
-    });
+      });
+      return;
     }
 
+    toast.success(`Invoice Downloaded Successfully!`, {
+      position: "top-left",
+      autoClose: 1000,
+      hideProgressBar: true,
+      theme: "colored",
+    });
+
     const pdf = new jsPDF();
-    
+
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(18);
     pdf.text("Invoice Summary", 20, 20);
@@ -92,15 +171,24 @@ const Checkout = () => {
     pdf.text(`Name: ${formData.name}`, 20, 40);
     pdf.text(`Email: ${formData.email}`, 20, 50);
     pdf.text(`Address: ${formData.address}, ${formData.city}, ${formData.zip}`, 20, 60);
-    pdf.text(`Payment Method: ${ formData.paymentMethod}`, 20, 70);
+    pdf.text(`Payment Method: ${formData.paymentMethod}`, 20, 70);
 
-    
     pdf.line(20, 65, 190, 65); // Divider line
 
     pdf.text(`Subtotal: $${localStorage.getItem("cartTotal")}`, 20, 80);
     pdf.text(`Shipping (${shippingMethod}): ${shippingMethod === "road" ? "Free" : shippingMethod === "normal" ? "$5" : shippingMethod === "express" ? "$10" : "$20"}`, 20, 90);
     pdf.setFont("helvetica", "bold");
     pdf.text(`Total: $${totalAmount}`, 20, 100);
+
+    // Add items with size info
+    let y = 110;
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(12);
+    for (const item of items) {
+      const sizeText = item.size ? ` (Size: ${item.size})` : "";
+      pdf.text(`${item.name}${sizeText} x${item.quantity} - $${item.price * item.quantity}`, 20, y);
+      y += 10;
+    }
 
     pdf.save("Invoice.pdf");
   };
@@ -132,7 +220,7 @@ const Checkout = () => {
         <p>Subtotal: <span className="font-semibold">${localStorage.getItem("cartTotal")}</span></p>
         <p>Shipping Method: <span className="font-semibold">{shippingMethod.charAt(0).toUpperCase() + shippingMethod.slice(1)}</span></p>
         <p>Payment Method: <span className="font-semibold">{formData.paymentMethod}</span></p>
-    
+
         <p>Shipping Charges: <span className="font-semibold">{shippingMethod === "road" ? "Free" : `$${shippingMethod === "normal" ? "5" : shippingMethod === "express" ? "10" : "20"}`}</span></p>
         <h3 className="font-bold text-lg mt-2">Total Amount: ${totalAmount}</h3>
       </div>
@@ -173,5 +261,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
-

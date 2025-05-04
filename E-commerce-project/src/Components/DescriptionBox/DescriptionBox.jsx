@@ -1,15 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { motion } from 'framer-motion';
 import one_star from "../../assets/one_star.png"
 import two_star from "../../assets/two_star.png"
 import three_star from "../../assets/three_star.png"
 import four_star from "../../assets/four_star.png"
 import five_star from "../../assets/five_star.png"
+import { ShopContext } from '../../Context/ShopContext';
 
 const DescriptionBox = ({ product }) => {
     const [active, setActive] = useState(true);
     const [showMore, setShowMore] = useState(false);
+    const [reviewText, setReviewText] = useState("");
+    const [reviewRating, setReviewRating] = useState(5);
     const colors = ["red", "yellowgreen", "orange", "blue", "green"];
+
+    const { addReview, user } = useContext(ShopContext);
+
+    const handleReviewSubmit = (e) => {
+        e.preventDefault();
+        if (!user) {
+            alert("You must be logged in to submit a review.");
+            return;
+        }
+        if (reviewText.trim() === "") {
+            alert("Please enter a review.");
+            return;
+        }
+        const newReview = {
+            user: user.name || "Anonymous",
+            rating: reviewRating,
+            comment: reviewText,
+            date: new Date().toISOString(),
+        };
+        addReview(product.id, newReview);
+        setReviewText("");
+        setReviewRating(5);
+    };
 
     return (
         <div className="descriptionbox mx-auto w-full max-w-screen-lg mt-10 px-4 md:px-10">
@@ -90,6 +116,35 @@ const DescriptionBox = ({ product }) => {
                         >
                             {showMore ? "Show Less" : "Show More"}
                         </motion.button>
+                    </div>
+
+                    {/* Review Form */}
+                    <div className="review-form mt-10">
+                      <h3 className="text-xl font-semibold mb-4">Write a Review</h3>
+                      <form onSubmit={handleReviewSubmit} className="flex flex-col gap-4">
+                        <label>
+                          Rating:
+                          <select value={reviewRating} onChange={(e) => setReviewRating(Number(e.target.value))} className="ml-2 p-1 border rounded">
+                            {[1,2,3,4,5].map((num) => (
+                              <option key={num} value={num}>{num} Star{num > 1 ? 's' : ''}</option>
+                            ))}
+                          </select>
+                        </label>
+                        <label>
+                          Review:
+                          <textarea
+                            value={reviewText}
+                            onChange={(e) => setReviewText(e.target.value)}
+                            className="w-full p-2 border rounded"
+                            rows={4}
+                            placeholder="Write your review here..."
+                            required
+                          />
+                        </label>
+                        <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                          Submit Review
+                        </button>
+                      </form>
                     </div>
                 </motion.div>
             )}
