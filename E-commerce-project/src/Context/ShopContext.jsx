@@ -45,6 +45,14 @@ const ShopContextProvider = (props) => {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [user]);
+
   const [all_product, setAllProduct] = useState(all_product_data);
 
   const [num, setNum] = useState(0);
@@ -59,6 +67,35 @@ const ShopContextProvider = (props) => {
       position: "top-left",
       autoClose: 1000,
       hideProgressBar: true,
+    });
+  };
+
+  // Add product
+  const addProduct = (newProduct) => {
+    setAllProduct((prevProducts) => {
+      const updatedProducts = [...prevProducts, newProduct];
+      localStorage.setItem("all_product", JSON.stringify(updatedProducts));
+      return updatedProducts;
+    });
+  };
+
+  // Update product by id
+  const updateProduct = (updatedProduct) => {
+    setAllProduct((prevProducts) => {
+      const updatedProducts = prevProducts.map((product) =>
+        product.id === updatedProduct.id ? updatedProduct : product
+      );
+      localStorage.setItem("all_product", JSON.stringify(updatedProducts));
+      return updatedProducts;
+    });
+  };
+
+  // Delete product by id
+  const deleteProduct = (productId) => {
+    setAllProduct((prevProducts) => {
+      const updatedProducts = prevProducts.filter((product) => product.id !== productId);
+      localStorage.setItem("all_product", JSON.stringify(updatedProducts));
+      return updatedProducts;
     });
   };
 
@@ -226,6 +263,9 @@ const ShopContextProvider = (props) => {
     stock,
     setStock,
     addReview,
+    addProduct,
+    updateProduct,
+    deleteProduct,
   };
 
   return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>;

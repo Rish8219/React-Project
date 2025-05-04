@@ -15,6 +15,7 @@ const LoginSignup = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("");
     const [isChecked, setIsChecked] = useState(false);
+    const [role, setRole] = useState("user"); // default role user
 
     // Load users from localStorage or empty array
     const getUsers = () => {
@@ -42,7 +43,7 @@ const LoginSignup = () => {
                         });
                         return;
                     }
-                    const newUser = { name: username, email, password };
+                    const newUser = { name: username, email, password, role };
                     users.push(newUser);
                     saveUsers(users);
                     toast.success("Account Created Successfully", {
@@ -57,6 +58,7 @@ const LoginSignup = () => {
                     setConfirmPassword("");
                     setIsChecked(false);
                     setShowPassword(false);
+                    setRole("user");
                     navigate("/login");
                 } else {
                     toast.error("Please agree to the terms and conditions", {
@@ -95,6 +97,15 @@ const LoginSignup = () => {
                         <input type={showPassword ? "text" : "password"} className="h-10 w-full px-4 outline-none border border-gray-300 text-lg rounded-md" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                         <input type={showPassword ? "text" : "password"} className="h-10 w-full px-4 outline-none border border-gray-300 text-lg rounded-md" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" />
 
+                        {/* Role Selection */}
+                        <div className="flex items-center gap-4 mt-2">
+                            <label className="text-gray-700 text-lg">Select Role:</label>
+                            <select value={role} onChange={(e) => setRole(e.target.value)} className="border accent-orange- border-gray-300 rounded-md px-2 py-1">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+
                         {/* Show Password Checkbox */}
                         <div className="flex items-center gap-2">
                             <input type="checkbox" className="accent-green-700  cursor-pointer" id="showPassword" onChange={() => setShowPassword(!showPassword)} checked={showPassword} />
@@ -130,6 +141,7 @@ export const Login = () => {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("");
+    const [role, setRole] = useState("user"); // default role user
 
     // Load users from localStorage or empty array
     const getUsers = () => {
@@ -140,8 +152,31 @@ export const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         if (email && password) {
+            if (role === "admin") {
+                // Hardcoded admin credentials
+                if (email === "rj12@gmail.com" && password === "rj") {
+                    const adminUser = { name: "Rishabh", email, role: "admin" };
+                    loginUser(adminUser);
+                    toast.success("Admin login successful", {
+                        position: "top-left",
+                        autoClose: 1000,
+                        hideProgressBar: true,
+                        theme: "colored",
+                    });
+                    navigate("/admin");
+                    return;
+                } else {
+                    toast.error("Invalid admin credentials", {
+                        position: "top-left",
+                        autoClose: 1000,
+                        hideProgressBar: true,
+                        theme: "colored",
+                    });
+                    return;
+                }
+            }
             const users = getUsers();
-            const user = users.find((u) => u.email === email && u.password === password);
+            const user = users.find((u) => u.email === email && u.password === password && u.role === role);
             if (user) {
                 loginUser(user);
                 toast.success("Login successful", {
@@ -152,7 +187,7 @@ export const Login = () => {
                 });
                 navigate("/profile");
             } else {
-                toast.error("Invalid email or password", {
+                toast.error("Invalid email, password or role", {
                     position: "top-left",
                     autoClose: 1000,
                     hideProgressBar: true,
@@ -177,6 +212,15 @@ export const Login = () => {
                     <div className="flex flex-col gap-4 mt-6">
                         <input type="email" className="h-10 w-full px-4 outline-none border border-gray-300 text-lg rounded-md" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email Address" />
                         <input type={showPassword ? "text" : "password"} className="h-10 w-full px-4 outline-none border border-gray-300 text-lg rounded-md" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+
+                        {/* Role Selection */}
+                        <div className="flex items-center gap-4 mt-2">
+                            <label className="text-gray-700 text-lg">Select Role:</label>
+                            <select value={role} onChange={(e) => setRole(e.target.value)} className="border border-gray-300 rounded-md px-2 py-1">
+                                <option value="user" className="accent-green">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
 
                         {/* Show Password Checkbox */}
                         <div className="flex items-center gap-2">
