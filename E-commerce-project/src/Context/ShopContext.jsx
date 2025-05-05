@@ -59,6 +59,18 @@ const ShopContextProvider = (props) => {
 
   useEffect(() => {
     setNum(Object.values(cartItems).reduce((acc, val) => acc + val, 0));
+    // Update cartTotal in localStorage whenever cartItems change
+    const totalAmount = Object.entries(cartItems).reduce((total, [key, quantity]) => {
+      if (quantity > 0) {
+        const [itemIdStr] = key.split("-");
+        const product = all_product.find(p => p.id === Number(itemIdStr));
+        if (product) {
+          total += product.new_price * quantity;
+        }
+      }
+      return total;
+    }, 0);
+    localStorage.setItem("cartTotal", JSON.stringify(totalAmount));
   }, [cartItems]);
 
   const loginUser = (userData) => {
