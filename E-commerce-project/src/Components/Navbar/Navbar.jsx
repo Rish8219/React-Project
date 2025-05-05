@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   if (user && user.role === "admin") {
-   
+
     return (
       <nav className="navbar fixed w-full z-10 flex justify-between items-center bg-transparent px-5 backdrop-blur-lg shadow-md py-4">
         <NavLink to="/admin">
@@ -35,7 +35,9 @@ const Navbar = () => {
                 <p className="font-semibold">{user.name}</p>
                 <p className="text-sm text-gray-600">{user.email}</p>
               </div>
-              <NavLink to="/profile" className="block px-4 py-2 hover:bg-gray-100">My Profile</NavLink>
+              {user.role !== "admin" && (
+                <NavLink to="/profile" className="block px-4 py-2 hover:bg-gray-100">My Profile</NavLink>
+              )}
               <button onClick={handleLogout} className="w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
             </div>
           )}
@@ -46,7 +48,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar fixed w-full z-10 flex min-[100px]:max-[370px]:py-4  justify-between items-center bg-transparent px-5 backdrop-blur-lg  shadow-md">
-      
+
       <NavLink to="/">
         <div className=" max-md:ml-5 nav-logo max-[370px]:w-10 flex items-center">
           <img src={logo} className="cursor-pointer max-[370px]:w-5" alt="logo" />
@@ -86,7 +88,7 @@ const Navbar = () => {
             )}
           </div>
         )}
-        <NavLink to="/cart" className="z-1000 max-[400px]:w-8"><img src={cart_icon} alt="cart-logo" className="h-10 max-[400px]:w-15 "  /></NavLink>
+        <NavLink to="/cart" className="z-1000 max-[400px]:w-8"><img src={cart_icon} alt="cart-logo" className="h-10 max-[400px]:w-15 " /></NavLink>
         <div className="icon absolute cursor-pointer top-0 right-0 bg-amber-500 rounded-full flex items-center justify-center z-4444 text-white text-sm w-5 h-5 max-[375px]:w-4 max-[375px]:h-4 max-[375px]:top-0">
           <p className="max-[375px]:text-xs">{num}</p>
         </div>
