@@ -39,7 +39,7 @@ const DescriptionBox = ({ product }) => {
 
     return (
         <div className="descriptionbox mx-auto w-full max-w-screen-lg mt-10 px-4 md:px-10">
-            {/* Tabs for Description & Reviews */}
+       
             <div className="descriptionbox-navigator flex justify-center md:justify-start gap-4">
                 <motion.div
                     whileHover={{ scale: 1.05 }}
@@ -63,7 +63,7 @@ const DescriptionBox = ({ product }) => {
                 </motion.div>
             </div>
 
-            {/* Description or Reviews Section */}
+            
             {active ? (
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }} 
@@ -81,32 +81,60 @@ const DescriptionBox = ({ product }) => {
                     transition={{ duration: 0.4 }} 
                    id='section1' className="descriptionbox-description flex flex-col gap-6 border-2 border-[#d0d0d0] p-6 md:p-10 mt-6 rounded-lg shadow-lg bg-white"
                 >
-                    <h2 className="text-2xl font-bold text-gray-700">Reviews & Comments</h2>
-             
-              {
-                showMore ? <p className="text-lg md:text-sm font-medium text-gray-600">Showing {product.reviews.length} out of {product.reviews.length} reviews </p> : <p className="text-lg md:text-sm font-medium text-gray-600">Showing 2 out of {product.reviews.length} reviews</p>
-              }
-             
 
-                    {product.reviews.slice(0, showMore ? product.reviews.length : 2).map((item, index) => (
-                        <div key={index} className="border-b border-gray-300 pb-4">
-                            <p className="text-lg md:text-xl font-bold mt-2 ">Certified Buyer : <input type="checkbox" className='rounded-xl accent-green-800' readOnly checked /></p>
-                            <p className="text-lg md:text-xl font-medium mt-2">Name : <span className="font-semibold">{item.user}</span></p>
-                            <p className="text-lg md:text-xl font-medium mt-2">
-                                Rating : <span style={{ backgroundColor: colors[item.rating - 1] }} className=" rounded-sm  p-1 px-2 text-md font-bold text-white" >{item.rating} </span>
-                                <span className='h-2 w-10'>        <img style={{display:"inline"}} src={
-                                item.rating <= 1 ? one_star :
-                                  item.rating > 1 && item.rating <= 2 ? two_star :
-                                item.rating > 2 && item.rating <= 3 ? three_star :
-                                item.rating > 3 && item.rating <= 4 ? four_star :
-                                  five_star
-                                } alt="" className='w-20 h-2 ' /></span>
-                            </p>
-                            <p className="text-lg md:text-xl font-medium mt-2">Comment : <span className="font-bold">{item.comment}</span></p>
-                        </div>
+        
+            <div className="review-form mt-">
+              <h3 className="text-xl font-semibold mb-4">Write a Review</h3>
+              <form onSubmit={handleReviewSubmit} className="flex flex-col gap-4">
+                <label>
+                  Rating:
+                  <select value={reviewRating} onChange={(e) => setReviewRating(Number(e.target.value))} className="ml-2 p-1 border rounded">
+                    {[1,2,3,4,5].map((num) => (
+                      <option key={num} value={num}>{num} Star{num > 1 ? 's' : ''}</option>
                     ))}
+                  </select>
+                </label>
+                <label>
+                  Review:
+                  <textarea
+                    value={reviewText}
+                    onChange={(e) => setReviewText(e.target.value)}
+                    className="w-full p-2 border rounded"
+                    rows={4}
+                    placeholder="Write your review here..."
+                    required
+                  />
+                </label>
+                <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                  Submit Review
+                </button>
+              </form>
+            </div>
+            <h2 className="text-2xl font-bold text-gray-700">Reviews & Comments</h2>
+             
+             {
+               showMore ? <p className="text-lg md:text-sm font-medium text-gray-600">Showing {product.reviews.length} out of {product.reviews.length} reviews </p> : <p className="text-lg md:text-sm font-medium text-gray-600">Showing 2 out of {product.reviews.length} reviews</p>
+             }
+            
 
-                    {/* Show More / Show Less Button */}
+            {product.reviews.slice(0, showMore ? product.reviews.length : 2).map((item, index) => (
+                <div key={index} className="border-b border-gray-300 pb-4">
+                    <p className="text-lg md:text-xl font-bold mt-2 ">Certified Buyer : <input type="checkbox" className='rounded-xl accent-green-800' readOnly checked /></p>
+                    <p className="text-lg md:text-xl font-medium mt-2">Name : <span className="font-semibold">{item.user}</span></p>
+                    <p className="text-lg md:text-xl font-medium mt-2">
+                        Rating : <span style={{ backgroundColor: colors[item.rating - 1] }} className=" rounded-sm  p-1 px-2 text-md font-bold text-white" >{item.rating} </span>
+                        <span className='h-2 w-10'>        <img style={{display:"inline"}} src={
+                        item.rating <= 1 ? one_star :
+                          item.rating > 1 && item.rating <= 2 ? two_star :
+                        item.rating > 2 && item.rating <= 3 ? three_star :
+                        item.rating > 3 && item.rating <= 4 ? four_star :
+                          five_star
+                        } alt="" className='w-20 h-2 ' /></span>
+                    </p>
+                    <p className="text-lg md:text-xl font-medium mt-2">Comment : <span className="font-bold">{item.comment}</span></p>
+                </div>
+            ))}
+
                     <div className="flex justify-center mt-6">
                         <motion.button 
                             whileHover={{ scale: 1.05 }}
@@ -116,35 +144,6 @@ const DescriptionBox = ({ product }) => {
                         >
                             {showMore ? "Show Less" : "Show More"}
                         </motion.button>
-                    </div>
-
-                    {/* Review Form */}
-                    <div className="review-form mt-10">
-                      <h3 className="text-xl font-semibold mb-4">Write a Review</h3>
-                      <form onSubmit={handleReviewSubmit} className="flex flex-col gap-4">
-                        <label>
-                          Rating:
-                          <select value={reviewRating} onChange={(e) => setReviewRating(Number(e.target.value))} className="ml-2 p-1 border rounded">
-                            {[1,2,3,4,5].map((num) => (
-                              <option key={num} value={num}>{num} Star{num > 1 ? 's' : ''}</option>
-                            ))}
-                          </select>
-                        </label>
-                        <label>
-                          Review:
-                          <textarea
-                            value={reviewText}
-                            onChange={(e) => setReviewText(e.target.value)}
-                            className="w-full p-2 border rounded"
-                            rows={4}
-                            placeholder="Write your review here..."
-                            required
-                          />
-                        </label>
-                        <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-                          Submit Review
-                        </button>
-                      </form>
                     </div>
                 </motion.div>
             )}

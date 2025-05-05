@@ -29,11 +29,11 @@ import Item from '../Items/Item';
 const NewCollections = () => {
     return (
         <div id="new-collections" className='new-collections flex flex-col w-full items-center mt-20 px-4'>
-        {/* Title */}
+
         <h1 className='text-4xl font-medium text-[#171717] text-center'>NEW COLLECTIONS</h1>
         <hr className='w-40 bg-[#252525] rounded-2xl mt-5 h-1' />
     
-        {/* Grid Layout */}
+       
         <div className="collections grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 w-full max-w-screen-lg mx-auto">
             {new_collections.map((item, index) => (
                 <Item key={index} id={item.id} name={item.name} image={item.image} newPrice={item.new_price} oldPrice={item.old_price} />

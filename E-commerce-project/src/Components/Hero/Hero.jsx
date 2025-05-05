@@ -17,7 +17,7 @@ const Hero = () => {
             }
         } else {
             navigate("/", { replace: false });
-            // Scroll after navigation with a slight delay
+           
             setTimeout(() => {
                 const element = document.getElementById("new-collections");
                 if (element) {
@@ -29,7 +29,7 @@ const Hero = () => {
 
     return (
 <div className='flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-500 min-h-screen items-center px-4 md:px-16 py-10'>
-    {/* Left Section */}
+  
     <div className="hero-left flex flex-col justify-center text-center md:text-left md:w-1/2">
         <h2 className='text-gray-700 text-3xl font-bold mt-10 md:mt-0'>NEW ARRIVALS ONLY</h2>
 
@@ -50,7 +50,7 @@ const Hero = () => {
         </div>
     </div>
 
-    {/* Right Section */}
+
     <div className="hero-right flex justify-center md:w-1/2 flex-wrap">
         <img src={hero_image} className='w-full max-w-md md:max-w-lg object-contain' alt="Hero section image showing latest arrivals" />
     </div>

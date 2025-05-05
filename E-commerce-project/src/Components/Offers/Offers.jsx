@@ -11,7 +11,7 @@ const Offers = () => {
 
     return (
         <div className='offers flex flex-col md:flex-row w-11/12 mx-auto bg-gradient-to-r from-pink-200 mt-20 to-gray-300 px-10 py-20 items-center'>
-        {/* Left Section: Text */}
+     
         <div className="offers-left w-full md:w-1/2 text-center md:text-left">
             <h1 className='text-[#171717] text-6xl max-[850px]:text-2xl font-medium'>Exclusive</h1>
             <h1 className='text-[#171717] text-6xl max-[850px]:text-2xl font-medium'>Offers For You</h1>
@@ -21,7 +21,7 @@ const Offers = () => {
             </button>
         </div>
     
-        {/* Right Section: Image */}
+     
         <div className="offers-right flex justify-center md:w-1/2">
             <img src={exclusive_image} className='w-full max-w-lg md:w-1/2 sm:w-2/3 object-contain' alt="Exclusive offers illustration" />
         </div>

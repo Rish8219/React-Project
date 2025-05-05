@@ -30,11 +30,11 @@ const Checkout = () => {
 
   useEffect(() => {
     if (user) {
-      setFormData({
-        ...formData,
+      setFormData((prevFormData) => ({
+        ...prevFormData,
         name: user.name || "",
         email: user.email || "",
-      });
+      }));
     }
   }, [user]);
 
@@ -67,7 +67,7 @@ const Checkout = () => {
       return;
     }
 
-    if ( !formData.name || !formData.email || !formData.address || !formData.city || !formData.zip) {
+    if (!formData.name || !formData.email || !formData.address || !formData.city || !formData.zip) {
       toast.error(`Please fill all the fields!`, {
         position: "top-left",
         autoClose: 1000,
@@ -153,6 +153,24 @@ const Checkout = () => {
       return;
     }
 
+    // Define items here similar to handleOrderPlacement
+    const items = [];
+    for (const itemKey in cartItems) {
+      if (cartItems[itemKey] > 0) {
+        const [itemIdStr, size] = itemKey.split("-");
+        const product = all_product.find(p => p.id === Number(itemIdStr));
+        if (product) {
+          items.push({
+            id: product.id,
+            name: product.name,
+            size: size || null,
+            quantity: cartItems[itemKey],
+            price: product.new_price,
+          });
+        }
+      }
+    }
+
     toast.success(`Invoice Downloaded Successfully!`, {
       position: "top-left",
       autoClose: 1000,
@@ -173,14 +191,14 @@ const Checkout = () => {
     pdf.text(`Address: ${formData.address}, ${formData.city}, ${formData.zip}`, 20, 60);
     pdf.text(`Payment Method: ${formData.paymentMethod}`, 20, 70);
 
-    pdf.line(20, 65, 190, 65); // Divider line
+    pdf.line(20, 65, 190, 65);
 
     pdf.text(`Subtotal: $${localStorage.getItem("cartTotal")}`, 20, 80);
     pdf.text(`Shipping (${shippingMethod}): ${shippingMethod === "road" ? "Free" : shippingMethod === "normal" ? "$5" : shippingMethod === "express" ? "$10" : "$20"}`, 20, 90);
     pdf.setFont("helvetica", "bold");
     pdf.text(`Total: $${totalAmount}`, 20, 100);
 
-    // Add items with size info
+
     let y = 110;
     pdf.setFont("helvetica", "normal");
     pdf.setFontSize(12);
@@ -197,7 +215,7 @@ const Checkout = () => {
     <div className="checkout-container user-select-none max-w-screen-lg mx-auto px-6 py-10">
       <h1 className="text-3xl pt-10 font-bold text-center mb-6">Checkout</h1>
 
-      {/* Billing Details */}
+
       <div className="billing-details bg-gray-100 p-6 rounded-md">
         <h2 className="text-xl font-semibold mb-4">Billing Details</h2>
         <form className="flex flex-col gap-4">
@@ -211,7 +229,6 @@ const Checkout = () => {
         </form>
       </div>
 
-      {/* Order Summary */}
       <div className="order-summary bg-gray-100 p-6 rounded-md mt-6 user-select-none">
         <h2 className="text-xl font-semibold mb-4">Invoice Summary</h2>
         <p>Name: <span className="font-semibold">{formData.name}</span></p>
@@ -225,7 +242,7 @@ const Checkout = () => {
         <h3 className="font-bold text-lg mt-2">Total Amount: ${totalAmount}</h3>
       </div>
 
-      {/* Shipping Selection */}
+
       <div className="shipping-method bg-gray-100 p-6 rounded-md mt-6">
         <h2 className="text-xl font-semibold mb-4">Shipping Method</h2>
         <select name="shippingMethod" className="border rounded-md p-2 w-full" value={shippingMethod} onChange={handleShippingChange}>
@@ -236,7 +253,7 @@ const Checkout = () => {
         </select>
       </div>
 
-      {/* Payment Method Selection */}
+
       <div className="payment-method bg-gray-100 p-6 rounded-md mt-6">
         <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
         <select name="paymentMethod" className="border rounded-md p-2 w-full" value={formData.paymentMethod} onChange={handleChange}>
@@ -247,7 +264,7 @@ const Checkout = () => {
         </select>
       </div>
 
-      {/* Order Actions */}
+
       <div className="flex gap-4 mt-6">
         <button className="bg-green-600 cursor-pointer hover:bg-green-800 text-white rounded-md py-3 px-6 w-full font-medium" onClick={handleOrderPlacement}>
           Place Order

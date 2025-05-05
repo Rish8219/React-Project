@@ -71,7 +71,7 @@ const CartItems = () => {
   };
 
   const totalAmount = getTotalCartAmount();
-  //setting cart total in local storage
+ 
   const discountedAmount = totalAmount - (totalAmount * discount);
   if(discountedAmount ) {
     localStorage.setItem("cartTotal", discountedAmount);
@@ -89,7 +89,7 @@ const CartItems = () => {
         theme: "colored",
       });
     } else {
-      // Proceed to checkout logic here
+  
       navigate("/checkout")
       toast.success("Proceeding to checkout...", {
         position: "top-left",
@@ -100,7 +100,7 @@ const CartItems = () => {
     }
   }
 
-  // Create a map of productId to array of sizes and quantities in cart
+
   const cartItemsByProduct = {};
   Object.entries(cartItems).forEach(([key, quantity]) => {
     if (quantity > 0) {
@@ -116,8 +116,6 @@ const CartItems = () => {
   return (
     <div className="cartitems w-full max-w-screen-xl pt-20 mx-auto px-6 py-10">
       <h1 className="text-2xl font-bold text-center mb-6">Your Shopping Cart</h1>
-
-      {/* Cart Header */}
       <div className="grid grid-cols-6 gap-4 justify-items-center text-[#454545] items-center text-sm font-medium w-full border-b p-4">
         <p>Product</p>
         <p>Title</p>
@@ -126,8 +124,6 @@ const CartItems = () => {
         <p>Total</p>
         <p>Remove</p>
       </div>
-
-      {/* Product Items */}
       {all_product.map((item) => (
         cartItemsByProduct[item.id] ? (
           cartItemsByProduct[item.id].map(({ size, quantity }) => (
@@ -150,7 +146,7 @@ const CartItems = () => {
         ) : null
       ))}
 
-      {/* Cart Totals */}
+     
       <div className="mt-10 px-4">
         <h2 className="text-lg font-bold mb-4">Cart Totals</h2>
         <div className="flex flex-col gap-3">
@@ -166,7 +162,7 @@ const CartItems = () => {
         </button>
       </div>
 
-      {/* Promo Code Section */}
+    
       <div className="mt-8">
         <h2 className="text-lg font-bold mb-4">Apply Promo Code</h2>
         <div className="flex flex-col sm:flex-row gap-4">
@@ -183,7 +179,6 @@ const CartItems = () => {
         </div>
       </div>
 
-      {/* Available Coupons Section */}
       <div className="mt-8">
         <h2 className="text-lg font-bold mb-4">Available Coupons</h2>
         <div className="flex flex-col gap-4">

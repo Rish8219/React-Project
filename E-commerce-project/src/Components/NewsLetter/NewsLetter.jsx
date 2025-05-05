@@ -9,7 +9,7 @@ const NewsLetter = () => {
        <div className='flex  items-center bg-white w-1/1 h-[70px] rounded-4xl
        border-1 border-solid border-red-400'>
         <input className='w-1/1 max- px-2 ml-10 max-[520px]:ml-0 max-[520px]:w-1/1 border-none outline-none text-[#616161] text-xl' type="email" placeholder="Enter email"/>
-       <button className=' bg-black rounded-4xl text-white text-2xl max-[520px]:px-3   max-[520px]:text-xl cursor-pointer px-4 py-5 '>Subscribe</button>
+       <button className=' bg-black rounded-4xl text-white text-2xl max-[520px]:px-3 hover:bg-orange-500    max-[520px]:text-xl cursor-pointer px-4 py-5 '>Subscribe</button>
        </div>
        
         </div>

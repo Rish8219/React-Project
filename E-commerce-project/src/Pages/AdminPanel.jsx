@@ -38,7 +38,7 @@ const AdminPanel = () => {
       toast.error("Please fill at least ID and Name for new product");
       return;
     }
-    // Convert id and prices to numbers
+ 
     const productToAdd = {
       ...newProduct,
       id: Number(newProduct.id),
@@ -100,7 +100,7 @@ const AdminPanel = () => {
     <div className="p-6 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 pt-20">Admin Panel - Product Management</h1>
 
-      {/* Add New Product Form */}
+    
       <form onSubmit={handleAddProduct} className="mb-8 border p-4 rounded shadow">
         <h2 className="text-xl font-semibold mb-4  ">Add New Product</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -117,7 +117,7 @@ const AdminPanel = () => {
         <button type="submit" className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer">Add Product</button>
       </form>
 
-      {/* Product List */}
+     
       <h2 className="text-xl font-semibold mb-4">Existing Products</h2>
       <table className="w-full border-collapse border border-gray-300">
         <thead>

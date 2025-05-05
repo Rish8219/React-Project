@@ -6,7 +6,7 @@ const SizePage = () => {
   const { size } = useParams();
   const { all_product } = useContext(ShopContext);
 
-  // Filter products that have stock > 0 for the given size
+  
   const filteredProducts = all_product.filter(
     (product) =>
       product.size &&

@@ -44,35 +44,35 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <RequireUser><Shop /></RequireUser>,
+        element:<Shop />,
       },
       {
         path: "/men",
-        element: <RequireUser><ShopCategory banner={men_banner} category="men" /></RequireUser>
+        element:<ShopCategory banner={men_banner} category="men" />
       },
       {
         path: "/women",
-        element: <RequireUser><ShopCategory banner={women_banner} category="women" /></RequireUser>
+        element:<ShopCategory banner={women_banner} category="women" />
       },
       {
         path: "/kid",
-        element: <RequireUser><ShopCategory banner={kid_banner} category="kid" /></RequireUser>
+        element:<ShopCategory banner={kid_banner} category="kid" />
       },
       {
         path: "/product",
-        element: <RequireUser><Product /></RequireUser>
+        element:<Product />
       },
       {
         path: "/product/:productId",
-        element: <RequireUser><Product /></RequireUser>,
+        element:<Product />,
       },
       {
         path: "/size/:size",
-        element: <RequireUser><SizePage /></RequireUser>
+        element:<SizePage />
       },
       {
         path: "/cart",
-        element: <RequireUser><Cart /></RequireUser>,
+        element:<Cart />,
       },
       {
         path: "/checkout",
@@ -92,11 +92,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <RequireUser><About /></RequireUser>
+        element:<About />
       },
       {
         path: "/contact",
-        element: <RequireUser><Contact /></RequireUser>
+        element:<Contact />
       },
       {
         path: "/admin",

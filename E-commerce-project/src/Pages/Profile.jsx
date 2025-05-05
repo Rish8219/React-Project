@@ -8,8 +8,6 @@ const Profile = () => {
   const { user, setUser } = useContext(ShopContext);
   const navigate = useNavigate();
   const [orderHistory, setOrderHistory] = useState([]);
-
-  // Form state for user info update
   const [username, setUsername] = useState(user ? user.name || "" : "");
   const [email, setEmail] = useState(user ? user.email || "" : "");
   const [password, setPassword] = useState("");
@@ -25,11 +23,11 @@ const Profile = () => {
       navigate("/login");
       return;
     }
-    // Load order history from localStorage or empty array
+
     const orders = localStorage.getItem("orders");
     if (orders) {
       const allOrders = JSON.parse(orders);
-      // Filter orders for current user by email
+ 
       const userOrders = allOrders.filter(order => order.email === user.email);
       setOrderHistory(userOrders);
     }
@@ -38,7 +36,7 @@ const Profile = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    // Basic validation
+   
     if (!username.trim()) {
       toast.error("Username cannot be empty.", { position: "top-left" });
       return;
@@ -52,20 +50,20 @@ const Profile = () => {
       return;
     }
 
-    // Update user object
+   
     const updatedUser = {
       ...user,
       name: username,
       email: email,
     };
     if (password) {
-      updatedUser.password = password; // Assuming password is stored here; adjust as needed
+      updatedUser.password = password; 
     }
 
     setUser(updatedUser);
     toast.success("Profile updated successfully!", { position: "top-left" });
 
-    // Clear password field after update
+  
     setPassword("");
   };
 
@@ -110,7 +108,7 @@ const Profile = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+          className="bg-blue-600 text-white px-6 py-2 rounded cursor-pointer hover:bg-blue-700 transition"
         >
           Update Profile
         </button>

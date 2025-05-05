@@ -64,7 +64,6 @@ const ProductDisplay = ({ product, selectedSize: selectedSizeProp }) => {
 
   const handleSizeSelect = (size) => {
     setSelectedSize(size);
-    // Update URL query parameter without navigation
     const searchParams = new URLSearchParams(location.search);
     searchParams.set('size', size);
     navigate({ pathname: location.pathname, search: searchParams.toString() }, { replace: true });
@@ -77,7 +76,7 @@ const ProductDisplay = ({ product, selectedSize: selectedSizeProp }) => {
 
   return (
     <div className="productdisplay flex flex-col md:flex-row px-4 md:px-10 lg:px-20">
-      {/* Left Section */}
+     
       <div className="productdisplay-left flex flex-col md:flex-row gap-5">
         <div className="productdisplay-img-list flex flex-row md:flex-col gap-4">
           {[...Array(4)].map((_, i) => (
@@ -115,11 +114,11 @@ const ProductDisplay = ({ product, selectedSize: selectedSizeProp }) => {
         </div>
       </div>
 
-      {/* Right Section */}
+    
       <div className="productdisplay-right flex flex-col mt-6 md:ml-10">
         <h1 className="text-3xl md:text-5xl text-[#3d3d3d]">{product.name}</h1>
 
-        {/* Star Ratings */}
+   
         <div className="productdisplay-right-star flex items-center w-60 h-15 gap-2 mt-4">
 
           <img src={
@@ -132,18 +131,16 @@ const ProductDisplay = ({ product, selectedSize: selectedSizeProp }) => {
           <p style={{ backgroundColor: averageRating <= 1 ? "red" : averageRating > 1 && averageRating <= 2 ? "orange" : averageRating > 2 && averageRating <= 3 ? "yellowgreen" : averageRating > 3 && averageRating <= 4 ? "orange" : averageRating > 4 && averageRating <= 5 ? "green" : "" }} className="text-lg font-medium  align-center h-10 py-1 text-center w-15">{averageRating}</p>
         </div>
 
-        {/* Prices */}
         <div className="flex gap-5 text-lg md:text-xl font-medium">
           <span className="line-through text-[#818181]">${product.old_price}</span>
           <span className="text-[#ff4141]">${product.new_price}</span>
         </div>
 
-        {/* Description */}
         <p className="mt-4 text-sm md:text-base text-gray-600">
           {product.description}
         </p>
 
-        {/* Size Selection */}
+       
         <div className="productdisplay-right-size mt-10">
           <h2 className="text-lg md:text-xl text-[#656565] font-medium">Select Size</h2>
           <div className="flex gap-3 md:gap-5 mt-4">
@@ -170,7 +167,7 @@ const ProductDisplay = ({ product, selectedSize: selectedSizeProp }) => {
           </div>
         </div>
 
-        {/* Add to Cart Button */}
+       
         <button
           onClick={() => {
             addToCart(product.id, selectedSize);
@@ -185,7 +182,7 @@ const ProductDisplay = ({ product, selectedSize: selectedSizeProp }) => {
           ADD TO CART
         </button>
 
-        {/* Buy Now Button */}
+ 
         <button
           onClick={handleBuyNow}
           className="mt-4 px-6 py-3 text-sm md:text-base bg-green-600 text-white rounded hover:bg-green-700"
@@ -198,7 +195,7 @@ const ProductDisplay = ({ product, selectedSize: selectedSizeProp }) => {
           BUY NOW
         </button>
 
-        {/* Categories & Tags */}
+     
         <p className="mt-4">
           <span className="font-medium">Category:</span> Women, T-Shirt, Crop-Top
         </p>
