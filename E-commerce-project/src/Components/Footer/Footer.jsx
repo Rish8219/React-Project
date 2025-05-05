@@ -28,10 +28,10 @@ const Footer = () => {
                 <Link to="/" className='hover:text-orange-500 transition duration-300'>Offices</Link>
             </li>
             <li>
-                <Link to="/" className='hover:text-orange-500 transition duration-300'>About</Link>
+                <Link to="/about" className='hover:text-orange-500 transition duration-300'>About</Link>
             </li>
             <li>
-                <Link to="/" className='hover:text-orange-500 transition duration-300'>Contact</Link>
+                <Link to="/contact" className='hover:text-orange-500 transition duration-300'>Contact</Link>
             </li>
         </ul>
 

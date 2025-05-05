@@ -257,6 +257,7 @@ const ShopContextProvider = (props) => {
     removeFromCart,
     getTotalCartAmount,
     user,
+    setUser,
     loginUser,
     logoutUser,
     setCartItems,

@@ -16,6 +16,8 @@ import Checkout from './Pages/Checkout.jsx'
 import Profile from './Pages/Profile.jsx'
 import SizePage from './Pages/SizePage.jsx'
 import AdminPanel from './Pages/AdminPanel.jsx';
+import About from './Pages/About.jsx';
+import Contact from './Pages/Contact.jsx';
 import { useContext } from "react";
 import { ShopContext } from "./Context/ShopContext.jsx";
 
@@ -87,6 +89,14 @@ const routes = createBrowserRouter([
       {
         path: "/profile",
         element: <RequireUser><Profile /></RequireUser>
+      },
+      {
+        path: "/about",
+        element: <RequireUser><About /></RequireUser>
+      },
+      {
+        path: "/contact",
+        element: <RequireUser><Contact /></RequireUser>
       },
       {
         path: "/admin",
