@@ -28,7 +28,7 @@ import Item from '../Items/Item';
 
 const NewCollections = () => {
     return (
-        <div className='new-collections flex flex-col w-full items-center mt-20 px-4'>
+        <div id="new-collections" className='new-collections flex flex-col w-full items-center mt-20 px-4'>
         {/* Title */}
         <h1 className='text-4xl font-medium text-[#171717] text-center'>NEW COLLECTIONS</h1>
         <hr className='w-40 bg-[#252525] rounded-2xl mt-5 h-1' />

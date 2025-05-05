@@ -1,10 +1,32 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import "./Hero.css";
 import hand_icon from "../../assets/hand_icon.png";
 import arrow from "../../assets/arrow.png";
 import hero_image from "../../assets/hero_image.png";
 
 const Hero = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleLatestCollectionClick = () => {
+        if (location.pathname === "/") {
+            const element = document.getElementById("new-collections");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        } else {
+            navigate("/", { replace: false });
+            // Scroll after navigation with a slight delay
+            setTimeout(() => {
+                const element = document.getElementById("new-collections");
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
+            }, 100);
+        }
+    };
+
     return (
 <div className='flex flex-col md:flex-row bg-gradient-to-r from-white to-gray-500 min-h-screen items-center px-4 md:px-16 py-10'>
     {/* Left Section */}
@@ -21,7 +43,7 @@ const Hero = () => {
         </div>
 
         <div className="hero-latest-btn flex justify-center md:justify-start mt-10">
-            <button className='bg-[#ff4141] flex cursor-pointer  min-[100px]:max-[550px]:text-xl min-[100px]:max-[550px]:text-px-2 min-[100px]:max-[550px]:py-3  items-center gap-4 text-white text-lg md:text-2xl px-6 py-4 rounded-full hover:bg-orange-800 transition-all'>
+            <button onClick={handleLatestCollectionClick} className='bg-[#ff4141] flex cursor-pointer  min-[100px]:max-[550px]:text-xl min-[100px]:max-[550px]:text-px-2 min-[100px]:max-[550px]:py-3  items-center gap-4 text-white text-lg md:text-2xl px-6 py-4 rounded-full hover:bg-orange-800 transition-all'>
                 Latest Collection  
                 <img src={arrow} className='w-5 h-5 md:w-7 md:h-7' alt="Arrow icon" />
             </button>
