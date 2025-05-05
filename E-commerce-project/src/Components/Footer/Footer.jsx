@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import footer_logo from "../../assets/logo_big.png"
 import insta_icon from "../../assets/instagram_icon.png"
 import pin_icon from "../../assets/pintester_icon.png"
@@ -17,24 +18,34 @@ const Footer = () => {
 
         {/* Footer Links */}
         <ul className="footer-links grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-10 text-[#252525] text-lg">
-            <li className='cursor-pointer hover:text-orange-500 transition duration-300'>Company</li>
-            <li className='cursor-pointer hover:text-orange-500 transition duration-300'>Products</li>
-            <li className='cursor-pointer hover:text-orange-500 transition duration-300'>Offices</li>
-            <li className='cursor-pointer hover:text-orange-500 transition duration-300'>About</li>
-            <li className='cursor-pointer hover:text-orange-500 transition duration-300'>Contact</li>
+            <li>
+                <Link to="/" className='hover:text-orange-500 transition duration-300'>Company</Link>
+            </li>
+            <li>
+                <Link to="/" className='hover:text-orange-500 transition duration-300'>Products</Link>
+            </li>
+            <li>
+                <Link to="/" className='hover:text-orange-500 transition duration-300'>Offices</Link>
+            </li>
+            <li>
+                <Link to="/" className='hover:text-orange-500 transition duration-300'>About</Link>
+            </li>
+            <li>
+                <Link to="/" className='hover:text-orange-500 transition duration-300'>Contact</Link>
+            </li>
         </ul>
 
         {/* Social Icons */}
         <div className="footer-social-icons flex gap-5">
-            <div className="footer-icons-container cursor-pointer p-3 bg-white shadow-md rounded-lg hover:bg-gray-200 transition duration-300">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="footer-icons-container p-3 bg-white shadow-md rounded-lg hover:bg-gray-200 transition duration-300">
                 <img src={insta_icon} alt="Instagram" className="w-6 h-6" />
-            </div>
-            <div className="footer-icons-container cursor-pointer p-3 bg-white shadow-md rounded-lg hover:bg-gray-200 transition duration-300">
+            </a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" className="footer-icons-container p-3 bg-white shadow-md rounded-lg hover:bg-gray-200 transition duration-300">
                 <img src={pin_icon} alt="Pinterest" className="w-6 h-6" />
-            </div>
-            <div className="footer-icons-container cursor-pointer p-3 bg-white shadow-md rounded-lg hover:bg-gray-200 transition duration-300">
+            </a>
+            <a href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="footer-icons-container p-3 bg-white shadow-md rounded-lg hover:bg-gray-200 transition duration-300">
                 <img src={whatsapp_icon} alt="WhatsApp" className="w-6 h-6" />
-            </div>
+            </a>
         </div>
 
         {/* Footer Copyright */}

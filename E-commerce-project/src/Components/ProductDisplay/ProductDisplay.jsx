@@ -70,6 +70,11 @@ const ProductDisplay = ({ product, selectedSize: selectedSizeProp }) => {
     navigate({ pathname: location.pathname, search: searchParams.toString() }, { replace: true });
   };
 
+  const handleBuyNow = () => {
+    addToCart(product.id, selectedSize);
+    navigate("/checkout");
+  };
+
   return (
     <div className="productdisplay flex flex-col md:flex-row px-4 md:px-10 lg:px-20">
       {/* Left Section */}
@@ -178,6 +183,19 @@ const ProductDisplay = ({ product, selectedSize: selectedSizeProp }) => {
           }}
         >
           ADD TO CART
+        </button>
+
+        {/* Buy Now Button */}
+        <button
+          onClick={handleBuyNow}
+          className="mt-4 px-6 py-3 text-sm md:text-base bg-green-600 text-white rounded hover:bg-green-700"
+          disabled={stock <= 0}
+          style={{
+            cursor: stock > 0 ? 'pointer' : 'not-allowed',
+            backgroundColor: stock > 0 ? '#22c55e' : '#ccc',
+          }}
+        >
+          BUY NOW
         </button>
 
         {/* Categories & Tags */}
