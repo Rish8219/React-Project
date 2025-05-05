@@ -5,9 +5,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
 
 const Profile = () => {
-  const { user } = useContext(ShopContext);
+  const { user, setUser } = useContext(ShopContext);
   const navigate = useNavigate();
   const [orderHistory, setOrderHistory] = useState([]);
+
+  // Form state for user info update
+  const [username, setUsername] = useState(user ? user.name || "" : "");
+  const [email, setEmail] = useState(user ? user.email || "" : "");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (!user) {
@@ -30,9 +35,87 @@ const Profile = () => {
     }
   }, [user, navigate]);
 
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    // Basic validation
+    if (!username.trim()) {
+      toast.error("Username cannot be empty.", { position: "top-left" });
+      return;
+    }
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Please enter a valid email address.", { position: "top-left" });
+      return;
+    }
+    if (password && password.length < 6) {
+      toast.error("Password must be at least 6 characters long.", { position: "top-left" });
+      return;
+    }
+
+    // Update user object
+    const updatedUser = {
+      ...user,
+      name: username,
+      email: email,
+    };
+    if (password) {
+      updatedUser.password = password; // Assuming password is stored here; adjust as needed
+    }
+
+    setUser(updatedUser);
+    toast.success("Profile updated successfully!", { position: "top-left" });
+
+    // Clear password field after update
+    setPassword("");
+  };
+
   return (
     <div className="profile-container max-w-screen-lg mx-auto px-6 py-10">
       <h1 className="text-3xl font-bold pt-8 mb-6">Profile</h1>
+
+      <form onSubmit={handleUpdate} className="mb-10 max-w-md">
+        <h2 className="text-xl font-semibold mb-4">Update Profile</h2>
+        <div className="mb-4">
+          <label htmlFor="username" className="block font-medium mb-1">Username</label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full border rounded px-3 py-2"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block font-medium mb-1">Email</label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border rounded px-3 py-2"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="password" className="block font-medium mb-1">New Password</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border rounded px-3 py-2"
+            placeholder="Leave blank to keep current password"
+          />
+        </div>
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+        >
+          Update Profile
+        </button>
+      </form>
+
       <h2 className="text-xl font-semibold mb-4">Order History</h2>
       {orderHistory.length === 0 ? (
         <p>You have no orders yet.</p>
