@@ -136,7 +136,13 @@ let all_product = [
     new_price: 100.0,
     available_stock:77,
     size:["S","M","L","XL","XXL"],
-
+    stock_per_size: {
+      S: 20,
+      M: 10,
+      L: 20,
+      XL: 10,
+      XXL: 17
+    },
     old_price: 150.0,
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
@@ -164,10 +170,17 @@ let all_product = [
     image: p5_img,
     new_price: 85.0,
     old_price: 120.5,
-    
+    available_stock: 50,
+    stock_per_size: {
+      S: 20,
+      M: 5,
+      L: 10,
+      XL: 10,
+      XXL: 5
+      },
+
     description: "A fun and cozy hooded top designed for women with nice color.",
     size:["S","M","L","XL","XXL"],
-
     reviews: [
       { user: "Tom", rating: 5, comment: "Great quality and my son found it great he loved this" },
       { user: "Lisa", rating: 4, comment: "Nice fabric, but runs not more than a year" },
@@ -181,9 +194,8 @@ let all_product = [
       { user: "Daniel", rating: 3, comment: "Average product. The color faded after a few washes." },
       { user: "Emma", rating: 4, comment: "Comfortable and stylish, but slightly overpriced." },
       { user: "James", rating: 1, comment: "Terrible experience. The product arrived damaged." }
-
-
     ],
+    
     total_reviews: 2
   },
   {
@@ -195,6 +207,13 @@ let all_product = [
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
     available_stock:20,
+    stock_per_size: {
+      S: 2,
+      M: 5,
+      L: 5,
+      XL: 3,
+      XXL: 5
+    },
 
     description: "A fun and cozy hooded top designed for women with nice color.",
     reviews: [
@@ -224,7 +243,14 @@ let all_product = [
     new_price: 85.0,
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
-    available_stock:20,
+    available_stock:34,
+    stock_per_size: {
+      S: 9,
+      M: 5,
+      L: 6,
+      XL: 7,
+      XXL: 6
+    },
 
 
     description: "A fun and cozy hooded top designed for women with nice color.",
@@ -253,7 +279,14 @@ let all_product = [
     category: "women",
     image: p8_img,
     new_price: 85.0,
-    available_stock:20,
+    available_stock:28,
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 4,
+      XXL: 4
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -275,6 +308,7 @@ let all_product = [
 
     ],
     total_reviews: 2
+    
   },
   {
     id: 9,
@@ -282,7 +316,14 @@ let all_product = [
     category: "women",
     image: p9_img,
     new_price: 85.0,
-    available_stock:20,
+    available_stock:28,
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 4,
+      XXL: 4
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -311,7 +352,14 @@ let all_product = [
     name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
     category: "women",
     image: p10_img,
-    available_stock:20,
+    available_stock:28,
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 4,
+      XXL: 4
+    },
 
     new_price: 85.0,
     old_price: 120.5,
@@ -340,7 +388,14 @@ let all_product = [
     name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
     category: "women",
     image: p11_img,
-    available_stock:20,
+    available_stock:28,
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 4,
+      XXL: 4
+    },
 
     new_price: 85.0,
     old_price: 120.5,
@@ -370,6 +425,14 @@ let all_product = [
     category: "women",
     image: p12_img,
     available_stock:20,
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 0,
+      XXL: 0
+    },
 
     new_price: 85.0,
     old_price: 120.5,
@@ -399,7 +462,16 @@ let all_product = [
     name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
     category: "men",
     image: p13_img,
-    available_stock:20,
+    available_stock:31,
+    
+    
+    stock_per_size: {
+      S: 12,
+      M: 8,
+      L: 2,
+      XL: 3,
+      XXL: 6
+    },
 
     new_price: 85.0,
     old_price: 120.5,
@@ -433,7 +505,16 @@ let all_product = [
     new_price: 85.0,
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
-    available_stock:20,
+    available_stock:23,
+    
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 0,
+      XXL: 3
+    },
 
 
     description: "A fun and cozy hooded top designed for men with nice color.",
@@ -464,7 +545,16 @@ let all_product = [
     new_price: 85.0,
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
-    available_stock:20,
+    available_stock:29,
+   
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 4,
+      XXL: 5
+    },
 
 
     description: "A fun and cozy hooded top designed for men with nice color.",
@@ -494,7 +584,16 @@ let all_product = [
     image: p16_img,
     new_price: 85.0,
     old_price: 120.5,
-    available_stock:20,
+    available_stock:90,
+
+    
+    stock_per_size: {
+      S: 20,
+      M: 13,
+      L: 30,
+      XL: 20,
+      XXL: 7
+    },
 
     size:["S","M","L","XL","XXL"],
 
@@ -523,6 +622,15 @@ let all_product = [
     category: "men",
     image: p17_img,
     available_stock:20,
+  
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 0,
+      XXL: 0
+    },
 
     new_price: 85.0,
     old_price: 120.5,
@@ -554,7 +662,16 @@ let all_product = [
     category: "men",
     image: p18_img,
     new_price: 85.0,
-    available_stock:20,
+    available_stock:24,
+  
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 4,
+      XXL: 0
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -585,7 +702,16 @@ let all_product = [
     category: "men",
     image: p19_img,
     new_price: 85.0,
-    available_stock:20,
+    
+    available_stock:44,
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 14,
+      XXL: 10
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -615,8 +741,17 @@ let all_product = [
     name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
     category: "men",
     image: p20_img,
-    available_stock:20,
+   
 
+    available_stock:30,
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 8,
+      XXL: 2
+    },
     new_price: 85.0,
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -647,7 +782,15 @@ let all_product = [
     name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
     category: "men",
     image: p21_img,
-    available_stock:20,
+    available_stock:30,
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 8,
+      XXL: 2
+    },
 
     new_price: 85.0,
     old_price: 120.5,
@@ -679,7 +822,15 @@ let all_product = [
     category: "men",
     image: p22_img,
     new_price: 85.0,
-    available_stock:20,
+    available_stock:37,
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 8,
+      XXL: 9
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -711,7 +862,15 @@ let all_product = [
     category: "men",
     image: p23_img,
     new_price: 85.0,
-    available_stock:20,
+    available_stock:42,
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 8,
+      XXL: 12
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -745,6 +904,15 @@ let all_product = [
     new_price: 85.0,
     old_price: 120.5,
     available_stock:20,
+ 
+    
+    stock_per_size: {
+      S: 6,
+      M: 8,
+      L: 6,
+      XL: 0,
+      XXL: 0
+    },
 
     size:["S","M","L","XL","XXL"],
 
@@ -776,7 +944,16 @@ let all_product = [
     image: p25_img,
     new_price: 85.0,
     old_price: 120.5,
-    available_stock:20,
+    available_stock:25,
+ 
+    
+    stock_per_size: {
+      S: 6,
+      M: 19,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
 
     size:["S","M","L","XL","XXL"],
 
@@ -808,7 +985,16 @@ let all_product = [
     image: p26_img,
     new_price: 85.0,
     old_price: 120.5,
-    available_stock:20,
+    available_stock:29,
+ 
+    
+    stock_per_size: {
+      S: 10,
+      M: 19,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
 
     size:["S","M","L","XL","XXL"],
 
@@ -839,7 +1025,16 @@ let all_product = [
     category: "kid",
     image: p27_img,
     new_price: 85.0,
-    available_stock:20,
+    available_stock:40,
+ 
+    
+    stock_per_size: {
+      S: 10,
+      M: 30,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -872,6 +1067,16 @@ let all_product = [
     image: p28_img,
     new_price: 85.0,
     available_stock:20,
+    
+ 
+    
+    stock_per_size: {
+      S: 10,
+      M: 10,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -903,7 +1108,17 @@ let all_product = [
     image: p29_img,
     new_price: 85.0,
     old_price: 120.5,
-    available_stock:20,
+   
+    available_stock:55,
+ 
+    
+    stock_per_size: {
+      S: 30,
+      M: 25,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
 
     size:["S","M","L","XL","XXL"],
 
@@ -931,7 +1146,17 @@ let all_product = [
     category: "kid",
     image: p30_img,
     new_price: 85.0,
-    available_stock:20,
+    
+    available_stock:25,
+ 
+    
+    stock_per_size: {
+      S: 6,
+      M: 19,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -960,7 +1185,17 @@ let all_product = [
     category: "kid",
     image: p31_img,
     new_price: 85.0,
-    available_stock:20,
+   
+    available_stock:85,
+ 
+    
+    stock_per_size: {
+      S: 30,
+      M: 55,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -990,6 +1225,16 @@ let all_product = [
     image: p32_img,
     new_price: 85.0,
     available_stock:20,
+    
+ 
+    
+    stock_per_size: {
+      S: 10,
+      M: 10,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -1017,8 +1262,16 @@ let all_product = [
     name: "Boys Orange Colourblocked Hooded Sweatshirt",
     category: "kid",
     image: p33_img,
-    available_stock:20,
-
+    available_stock:25,
+ 
+    
+    stock_per_size: {
+      S: 6,
+      M: 19,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
     new_price: 85.0,
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -1048,8 +1301,17 @@ let all_product = [
     image: p34_img,
     new_price: 85.0,
     old_price: 120.5,
-    available_stock:20,
-
+    available_stock:68,
+    
+ 
+    
+    stock_per_size: {
+      S: 23,
+      M: 45,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
     size:["S","M","L","XL","XXL"],
 
     description: "A fun and cozy sweatshirt for children to keep them flaunt their style",
@@ -1077,6 +1339,16 @@ let all_product = [
     image: p35_img,
     new_price: 85.0,
     available_stock:20,
+    available_stock:25,
+ 
+    
+    stock_per_size: {
+      S: 5,
+      M: 15,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
 
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
@@ -1097,7 +1369,8 @@ let all_product = [
       { user: "Charlotte", rating: 4, comment: "Great product, but sizing runs a bit small." }
 
     ],
-    total_reviews: 2
+    total_reviews: 2,
+
   },
   {
     id: 36,
@@ -1105,8 +1378,17 @@ let all_product = [
     category: "kid",
     image: p36_img,
     new_price: 85.0,
-    available_stock:20,
-
+    // available_stock:20,
+    
+ 
+    
+    stock_per_size: {
+      S: 10,
+      M: 10,
+      L: 0,
+      XL: 0,
+      XXL: 0
+    },
     old_price: 120.5,
     size:["S","M","L","XL","XXL"],
 

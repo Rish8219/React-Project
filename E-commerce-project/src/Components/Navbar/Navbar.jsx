@@ -73,11 +73,11 @@ const Navbar = () => {
           <NavLink to="/login"><button className="login max-[400px]:ml-10 max-[370px]:px-2  max-[370px]:py-1.5 max-[370px]:text-sm hover:bg-orange-700 bg-[#ff5a5a] text-white px-4 py-2 cursor-pointer rounded-sm">Login</button></NavLink>
         ) : (
           <div className="relative">
-            <button onClick={() => setProfileOpen(!profileOpen)} className="login max-[400px]:ml-10 max-[370px]:px-2  max-[370px]:py-1.5 max-[370px]:text-sm bg-[#ff5a5a] text-white px-4 py-2 cursor-pointer rounded-sm">
+            <button  onMouseEnter={() => setProfileOpen(true)} className="login max-[400px]:ml-10 max-[370px]:px-2  max-[370px]:py-1.5 max-[370px]:text-sm bg-[#ff5a5a] text-white px-4 py-2 cursor-pointer rounded-sm">
               {user.name}
             </button>
             {profileOpen && (
-              <div className="absolute right-0 mt-2 w-auto bg-white border rounded-md shadow-lg z-50">
+              <div onMouseLeave={()=>setProfileOpen(false)} className="absolute right-0 mt-2 w-auto bg-white border rounded-md shadow-lg z-50">
                 <div className="p-4 border-b">
                   <p className="font-semibold">{user.name}</p>
                   <p className="text-sm text-gray-600">{user.email}</p>

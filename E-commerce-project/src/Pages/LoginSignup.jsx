@@ -6,7 +6,7 @@ import { ShopContext } from "../Context/ShopContext";
 
 //signup page
 const LoginSignup = () => {
-    const { loginUser } = useContext(ShopContext);
+    // const { loginUser } = useContext(ShopContext);
     const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
@@ -88,7 +88,7 @@ const LoginSignup = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-white to-gray-500">
-            <div className="bg-white shadow-md rounded-lg p-8 w-1/3 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
+            <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
                 <h1 className="text-3xl font-bold text-center">Sign Up</h1>
                 <form onSubmit={handleSignup}>
                     <div className="flex flex-col gap-4 mt-6">
@@ -202,7 +202,7 @@ export const Login = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-white to-gray-500">
-            <div className="bg-white shadow-md rounded-lg p-8 w-1/3 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
+            <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
                 <h1 className="text-3xl font-bold text-center">Login</h1>
                 <form onSubmit={handleLogin}>
                     <div className="flex flex-col gap-4 mt-6">
