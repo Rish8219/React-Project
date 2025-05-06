@@ -36,14 +36,27 @@ const getDefaultStock = () => {
 
 const ShopContextProvider = (props) => {
   // Initialize cartItems and stock directly from all_product_data, ignoring localStorage
-  const [cartItems, setCartItems] = useState(getDefaultCart());
-
-  const [stock, setStock] = useState(getDefaultStock());
-
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
     return savedUser ? JSON.parse(savedUser) : null;
   });
+
+  const [cartItems, setCartItems] = useState({});
+
+  useEffect(() => {
+    if (user) {
+      const savedCart = localStorage.getItem(`cartItems_${user.id || user.email}`);
+      if (savedCart) {
+        setCartItems(JSON.parse(savedCart));
+      } else {
+        setCartItems(getDefaultCart());
+      }
+    } else {
+      setCartItems(getDefaultCart());
+    }
+  }, [user]);
+
+  const [stock, setStock] = useState(getDefaultStock());
 
   useEffect(() => {
     if (user) {
@@ -53,13 +66,22 @@ const ShopContextProvider = (props) => {
     }
   }, [user]);
 
-  const [all_product, setAllProduct] = useState(all_product_data);
+  const [all_product, setAllProduct] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      const userObj = JSON.parse(savedUser);
+      const savedProducts = localStorage.getItem(`all_product_${userObj.id || userObj.email}`);
+      return savedProducts ? JSON.parse(savedProducts) : all_product_data;
+    }
+    return all_product_data;
+  });
+
 
   const [num, setNum] = useState(0);
 
   useEffect(() => {
     setNum(Object.values(cartItems).reduce((acc, val) => acc + val, 0));
-    // Update cartTotal in localStorage whenever cartItems or all_product change
+    // Update cartTotal in localStorage whenever cartItems, all_product or user change
     const totalAmount = Object.entries(cartItems).reduce((total, [key, quantity]) => {
       if (quantity > 0) {
         const [itemIdStr] = key.split("-");
@@ -71,7 +93,14 @@ const ShopContextProvider = (props) => {
       return total;
     }, 0);
     localStorage.setItem("cartTotal", JSON.stringify(totalAmount));
-  }, [cartItems, all_product]);
+    if (user) {
+      localStorage.setItem(`cartItems_${user.id || user.email}`, JSON.stringify(cartItems));
+      localStorage.setItem(`all_product_${user.id || user.email}`, JSON.stringify(all_product));
+    } else {
+      localStorage.removeItem("cartItems");
+      localStorage.removeItem("all_product");
+    }
+  }, [cartItems, all_product, user]);
 
   const loginUser = (userData) => {
     setUser(userData);
@@ -262,24 +291,25 @@ const ShopContextProvider = (props) => {
   };
 
   const contextValue = {
-    num,
-    all_product,
-    cartItems,
-    addToCart,
-    removeFromCart,
-    getTotalCartAmount,
-    user,
-    setUser,
-    loginUser,
-    logoutUser,
-    setCartItems,
-    stock,
-    setStock,
-    addReview,
-    addProduct,
-    updateProduct,
-    deleteProduct,
-  };
+       num,
+       all_product,
+       cartItems,
+       addToCart,
+       removeFromCart,
+       getTotalCartAmount,
+       user,
+       setUser,
+       loginUser,
+       logoutUser,
+       setCartItems,
+       stock,
+       setStock,
+       addReview,
+       addProduct,
+       updateProduct,
+       deleteProduct,
+    
+   };
 
   return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>;
 };

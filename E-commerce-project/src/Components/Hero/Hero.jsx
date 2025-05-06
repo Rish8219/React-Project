@@ -43,7 +43,7 @@ const Hero = () => {
         </div>
 
         <div className="hero-latest-btn flex justify-center md:justify-start mt-10">
-            <button onClick={handleLatestCollectionClick} className='bg-[#ff4141] flex cursor-pointer  min-[100px]:max-[550px]:text-xl min-[100px]:max-[550px]:text-px-2 min-[100px]:max-[550px]:py-3  items-center gap-4 text-white text-lg md:text-2xl px-6 py-4 rounded-full hover:bg-orange-800 transition-all'>
+            <button onClick={handleLatestCollectionClick} className='bg-orange-600 flex cursor-pointer  min-[100px]:max-[550px]:text-xl min-[100px]:max-[550px]:text-px-2 min-[100px]:max-[550px]:py-3  items-center gap-4 text-white text-lg md:text-2xl px-6 py-4 rounded-full hover:bg-orange-700 transition-all'>
                 Latest Collection  
                 <img src={arrow} className='w-5 h-5 md:w-7 md:h-7' alt="Arrow icon" />
             </button>

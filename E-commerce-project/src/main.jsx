@@ -44,7 +44,7 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <RequireUser><Shop /></RequireUser>,
+        element:<Shop />,
       },
       {
         path: "/men",

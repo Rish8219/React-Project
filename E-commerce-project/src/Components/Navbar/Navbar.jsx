@@ -22,7 +22,7 @@ const Navbar = () => {
         <NavLink to="/admin">
           <div className="nav-logo flex items-center cursor-pointer">
             <img src={logo} className="w-10" alt="logo" />
-            <p className="text-2xl font-bold ml-2 text-black hover:text-orange-600">Shopper</p>
+            <p className="text-2xl font-bold ml-2 text-black hover:text-orange-600">SHOPPER</p>
           </div>
         </NavLink>
         <div className="relative">
@@ -52,7 +52,7 @@ const Navbar = () => {
       <NavLink to="/">
         <div className=" max-md:ml-5 nav-logo max-[370px]:w-10 flex items-center">
           <img src={logo} className="cursor-pointer max-[370px]:w-5" alt="logo" />
-          <p className=" cursor-pointer inline text-2xl hover:text-orange-500 max-[370px]:text-xl font-bold ml-2">Shopper</p>
+          <p className=" cursor-pointer inline text-2xl hover:text-orange-500 max-[370px]:text-xl font-bold ml-2">SHOPPER</p>
         </div>
       </NavLink>
 

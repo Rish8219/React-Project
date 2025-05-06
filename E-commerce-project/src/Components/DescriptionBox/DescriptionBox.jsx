@@ -105,7 +105,7 @@ const DescriptionBox = ({ product }) => {
                     required
                   />
                 </label>
-                <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                <button type="submit" className="bg-orange-500 text-white py-2 cursor-pointer rounded hover:bg-orange-700">
                   Submit Review
                 </button>
               </form>
