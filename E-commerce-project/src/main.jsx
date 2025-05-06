@@ -20,6 +20,7 @@ import About from './Pages/About.jsx';
 import Contact from './Pages/Contact.jsx';
 import { useContext } from "react";
 import { ShopContext } from "./Context/ShopContext.jsx";
+import UserManagement from './Components/UserManagement/UserManagement.jsx'
 
 const RequireAdmin = ({ children }) => {
   const { user } = useContext(ShopContext);
@@ -101,6 +102,10 @@ const routes = createBrowserRouter([
       {
         path: "/admin",
         element: <RequireAdmin><AdminPanel /></RequireAdmin>
+      },
+      {
+        path: "/admin/users",
+        element: <RequireAdmin><UserManagement/></RequireAdmin>
       }
     ]
   }

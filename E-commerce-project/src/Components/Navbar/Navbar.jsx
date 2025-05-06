@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import logo from "./.././../assets/logo.png";
 import cart_icon from "./.././../assets/cart_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
@@ -9,6 +9,7 @@ const Navbar = () => {
   const { num, user, logoutUser } = useContext(ShopContext);
   const [profileOpen, setProfileOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     logoutUser();
@@ -16,6 +17,9 @@ const Navbar = () => {
   };
 
   if (user && user.role === "admin") {
+    const isUserManagementPage = location.pathname === "/admin/users";
+    const buttonLabel = isUserManagementPage ? "Product Management" : "Manage Users";
+    const buttonLink = isUserManagementPage ? "/admin" : "/admin/users";
 
     return (
       <nav className="navbar fixed w-full z-10 flex justify-between items-center bg-transparent px-5 backdrop-blur-lg shadow-md py-4">
@@ -29,6 +33,9 @@ const Navbar = () => {
           <button onClick={() => setProfileOpen(!profileOpen)} className="login bg-[#ff5a5a] hover:bg-orange-700 text-white px-4 py-2 cursor-pointer rounded-sm">
             {user.name}
           </button>
+          <NavLink to={buttonLink} className="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded cursor-pointer inline-block">
+            {buttonLabel}
+          </NavLink>
           {profileOpen && (
             <div className="absolute right-0 mt-2 w-auto bg-white border rounded-md shadow-lg z-50">
               <div className="p-4 border-b">
