@@ -32,14 +32,15 @@ const Navbar = () => {
         </NavLink>
         <div className="relative">
          
-          <button onClick={() => setProfileOpen(!profileOpen)} className="login bg-[#ff5a5a] hover:bg-orange-700 text-white px-4 py-2 cursor-pointer rounded-sm">
-            {user.name}
-          </button>
-          <NavLink to={buttonLink} className="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded cursor-pointer inline-block">
+        <NavLink to={buttonLink} className="ml-4 bg-blue-600 hover:bg-blue-700 text-white mr-4 px-4 py-2 rounded cursor-pointer inline-block">
             {buttonLabel}
           </NavLink>
+          <button onMouseEnter={() => setProfileOpen(true)} className="login bg-[#ff5a5a] hover:bg-orange-700 text-white px-4 py-2 cursor-pointer rounded-sm">
+            {user.name}
+          </button>
+          
           {profileOpen && (
-            <div className="absolute right-0 mt-2 w-auto bg-white border rounded-md shadow-lg z-50">
+            <div onMouseLeave={() => setProfileOpen(false)} className="absolute right-0 mt-2 w-auto bg-white border rounded-md shadow-lg z-50">
               <div className="p-4 border-b">
                 <p className="font-semibold">{user.name}</p>
                 <p className="text-sm text-gray-600">{user.email}</p>
