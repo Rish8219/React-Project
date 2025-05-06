@@ -28,8 +28,10 @@ const Navbar = () => {
             <img src={logo} className="w-10" alt="logo" />
             <p className="text-2xl font-bold ml-2 text-black hover:text-orange-600">SHOPPER</p>
           </div>
+        
         </NavLink>
         <div className="relative">
+         
           <button onClick={() => setProfileOpen(!profileOpen)} className="login bg-[#ff5a5a] hover:bg-orange-700 text-white px-4 py-2 cursor-pointer rounded-sm">
             {user.name}
           </button>
