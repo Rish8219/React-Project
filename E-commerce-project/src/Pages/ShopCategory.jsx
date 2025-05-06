@@ -58,15 +58,15 @@ const ShopCategory = (props) => {
                 <div className="sortcategory-sort relative flex items-center gap-2 bg-transparent text-gray-600 border border-gray-600 px-4 py-2 rounded-md cursor-pointer shadow-sm transition duration-300 hover:bg-gray-600 hover:text-white focus-within:bg-gray-600 focus-within:text-white max-w-max">
                     <label htmlFor="sort-select" className="cursor-pointer select-none">Sort by</label>
                     <select
-    id="sort-select"
-    value={sortCriteria}
-    onChange={handleSortChange}
-    className="bg-transparent text-gray-600 border-none rounded-md outline-none cursor-pointer pl-2 pr-6 py-1 hover:text-white focus:text-white"
->
-    <option className="bg-white text-black hover:bg-gray-600 hover:text-white" value="default">Default</option>
-    <option className="bg-white text-black hover:bg-gray-600 hover:text-white" value="price-asc">Price: Low to High</option>
-    <option className="bg-white text-black hover:bg-gray-600 hover:text-white" value="price-desc">Price: High to Low</option>
-</select>
+                        id="sort-select"
+                        value={sortCriteria}
+                        onChange={handleSortChange}
+                        className="bg-transparent text-gray-600 border-none rounded-md outline-none cursor-pointer pl-2 pr-6 py-1 hover:text-white focus:text-white"
+                    >
+                        <option className="bg-white text-black hover:bg-gray-600 hover:text-white" value="default">Default</option>
+                        <option className="bg-white text-black hover:bg-gray-600 hover:text-white" value="price-asc">Price: Low to High</option>
+                        <option className="bg-white text-black hover:bg-gray-600 hover:text-white" value="price-desc">Price: High to Low</option>
+                    </select>
 
                 </div>
             </div>
