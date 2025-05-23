@@ -19,9 +19,21 @@ const AdminPanel = () => {
     image: "",
   });
 
+  const [orders, setOrders] = useState([]);
+
   useEffect(() => {
     setProducts(all_product);
   }, [all_product]);
+
+  useEffect(() => {
+    // Load orders from local storage on mount
+    const storedOrders = localStorage.getItem("orders");
+    if (storedOrders) {
+      setOrders(JSON.parse(storedOrders));
+    }
+  }, []);
+
+  const getOrderKey = (order) => order.id || order.date;
 
   const handleInputChange = (e, isNew = false) => {
     const { name, value } = e.target;
@@ -96,11 +108,32 @@ const AdminPanel = () => {
     setEditingProduct(null);
   };
 
+  const handleShippingModeChange = (orderKey, mode) => {
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        getOrderKey(order) === orderKey ? { ...order, shippingMode: mode } : order
+      )
+    );
+  };
+
+  const handleStartShipping = (orderKey) => {
+    setOrders((prevOrders) => {
+      const updatedOrders = prevOrders.map((order) => {
+        if (getOrderKey(order) === orderKey) {
+          return { ...order, status: "Shipping Started" };
+        }
+        return order;
+      });
+      localStorage.setItem("orders", JSON.stringify(updatedOrders));
+      toast.success("Shipping started for order ID: " + orderKey);
+      return updatedOrders;
+    });
+  };
+
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 pt-20">Admin Panel - Product Management</h1>
 
-    
       <form onSubmit={handleAddProduct} className="mb-8 border p-4 rounded shadow">
         <h2 className="text-xl font-semibold mb-4  ">Add New Product</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -117,7 +150,6 @@ const AdminPanel = () => {
         <button type="submit" className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer">Add Product</button>
       </form>
 
-     
       <h2 className="text-xl font-semibold mb-4">Existing Products</h2>
       <table className="w-full border-collapse border border-gray-300">
         <thead>
@@ -183,6 +215,68 @@ const AdminPanel = () => {
           )}
         </tbody>
       </table>
+
+      {/* Orders Management Section */}
+      <h1 className="text-3xl font-bold mb-6 pt-20">Admin Panel - Orders Management</h1>
+      {orders.length === 0 ? (
+        <p>No orders found.</p>
+      ) : (
+        <table className="w-full border-collapse border border-gray-300">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="border border-gray-300 p-2">Order ID</th>
+              <th className="border border-gray-300 p-2">User</th>
+              <th className="border border-gray-300 p-2">Items</th>
+              <th className="border border-gray-300 p-2">Total Price</th>
+              <th className="border border-gray-300 p-2">Status</th>
+              <th className="border border-gray-300 p-2">Shipping Mode</th>
+              <th className="border border-gray-300 p-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map((order) => (
+              <tr key={order.id}>
+                <td className="border border-gray-300 p-2">{order.id || order.date}</td>
+                <td className="border border-gray-300 p-2">{order.name || order.user}</td>
+                <td className="border border-gray-300 p-2">
+                  {order.items.map((item, index) => (
+                    <div key={index}>
+                      {item.name} x {item.quantity}
+                    </div>
+                  ))}
+                </td>
+                <td className="border border-gray-300 p-2">{order.totalPrice}</td>
+                <td className="border border-gray-300 p-2">{order.status || "Pending"}</td>
+                <td className="border border-gray-300 p-2">
+                <select
+                    value={order.shippingMode || ""}
+                    onChange={(e) => handleShippingModeChange(getOrderKey(order), e.target.value)}
+                    className="border p-1 rounded"
+                  >
+                    <option value="">Select Mode</option>
+                    <option value="Air">Air</option>
+                    <option value="Sea">Sea</option>
+                    <option value="Land">Land</option>
+                  </select>
+                </td>
+                <td className="border border-gray-300 p-2">
+                  <button
+                    onClick={() => handleStartShipping(getOrderKey(order))}
+                    disabled={!order.shippingMode || order.status === "Shipping Started"}
+                    className={`px-2 py-1 rounded text-white ${
+                      !order.shippingMode || order.status === "Shipping Started"
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-blue-600 hover:bg-blue-700 cursor-pointer"
+                    }`}
+                  >
+                    Start Shipping
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

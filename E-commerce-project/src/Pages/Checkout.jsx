@@ -16,6 +16,7 @@ const Checkout = () => {
     city: "",
     zip: "",
     paymentMethod: "credit-card",
+
   });
   const [totalAmount, setTotalAmount] = useState(0);
   const [shippingMethod, setShippingMethod] = useState("road"); // Default: Road (Free)

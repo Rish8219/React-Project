@@ -45,35 +45,35 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element:<Shop />,
+        element: <RequireUser> <Shop /> </RequireUser>,
       },
       {
         path: "/men",
-        element:<ShopCategory banner={men_banner} category="men" />
+        element: <RequireUser> <ShopCategory banner={men_banner} category="men" /> </RequireUser>
       },
       {
         path: "/women",
-        element:<ShopCategory banner={women_banner} category="women" />
+        element: <RequireUser> <ShopCategory banner={women_banner} category="women" /> </RequireUser>
       },
       {
         path: "/kid",
-        element:<ShopCategory banner={kid_banner} category="kid" />
+        element: <RequireUser> <ShopCategory banner={kid_banner} category="kid" /> </RequireUser>
       },
       {
         path: "/product",
-        element:<Product />
+        element: <RequireUser> <Product /> </RequireUser>
       },
       {
         path: "/product/:productId",
-        element:<Product />,
+        element: <RequireUser> <Product /> </RequireUser>
       },
       {
         path: "/size/:size",
-        element:<SizePage />
+        element: <RequireUser> <SizePage /> </RequireUser>
       },
       {
         path: "/cart",
-        element:<Cart />,
+        element: <RequireUser> <Cart /> </RequireUser>,
       },
       {
         path: "/checkout",
